@@ -4,7 +4,12 @@ tagline: Chris and Gemma Scott
 ---
 _model: frontpage
 ---
-body:
-
-This is a basic demo website that shows how to use Lektor for a basic
-website with some pages.
+renderMap: yes
+---
+body: View posts on the map below or as a list here (add link...).
+---
+latitude: -36.894289
+---
+longitude: 174.716553
+---
+zoom: 10
