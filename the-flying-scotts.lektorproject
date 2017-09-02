@@ -1,2 +1,5 @@
 [project]
 name = The Flying Scotts
+
+[packages]
+lektor-disqus-comments = 0.2

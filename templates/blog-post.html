@@ -25,7 +25,11 @@
         </div>
         {% if not this.gpx and this.latitude and this.longitude %}
             <div class="container">
-                <div id="map" style="height: 500px;"></div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <div id="map" style="height: 500px;"></div>
+                    </div>
+                </div>
             </div>
         {% endif %}
     </article>
@@ -53,6 +57,17 @@
             </footer>
         </section>
     {% endif %}
+
+    <!-- Disqus comments -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <hr>
+                <h2>Comments</h2>
+                <div class="comments">{{ render_disqus_comments() }}</div>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
 
 {% block bottom %}
