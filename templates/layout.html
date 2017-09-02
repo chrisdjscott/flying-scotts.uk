@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,55 +9,54 @@
     {# <meta name="author" content="{{ config.author }}"> #}
 
     {% block head %}
-    <title>{% block title %}{% set root = site.get('/') %}{{ this.title }} | {{ root.title }}{% endblock %}</title>
+        <title>{% block title %}{% set root = site.get('/') %}{{ this.title }} | {{ root.title }}{% endblock %}</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ '/static/css/bootstrap.min.css'|asseturl }}" rel="stylesheet">
+        <!-- Bootstrap Core CSS -->
+        <link href="{{ '/static/css/bootstrap.min.css'|asseturl }}" rel="stylesheet">
 
-    <!-- Leaflet CSS and JavaScript -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+        <!-- Leaflet CSS and JavaScript -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
 
-    <!-- Custom CSS -->
-    <link href="{{ '/static/css/clean-blog.min.css'|asseturl }}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{{ '/static/css/clean-blog.min.css'|asseturl }}" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <!-- Custom Fonts -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-    <!-- Leaflet awesome icons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.css'|asseturl }}" type='text/css'>
-    <script src="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.min.js'|asseturl }}" type='text/javascript'></script>
+        <!-- Leaflet awesome icons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" type="text/css">
+        <link rel="stylesheet" href="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.css'|asseturl }}" type='text/css'>
+        <script src="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.min.js'|asseturl }}" type='text/javascript'></script>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
     {% endblock head %}
- 
 </head>
 
 <body>
+    <!-- Navigation -->
     {% block nav %}
-	<!-- Navigation -->
-    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <a class="navbar-brand" href="{{ '/'|url }}">Home</a>
-            </div>
+        <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header page-scroll">
+                    <a class="navbar-brand" href="{{ '/'|url }}">Home</a>
+                </div>
 
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
     {% endblock nav %}
+
     <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('{% block background %}{{ '/static/img/background.jpg'|asseturl }}{% endblock %}') ;">
         <div class="container">
             <div class="row">
@@ -77,28 +75,29 @@
 
     <!-- Main Content -->
     {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                {% block body %}<p>Coming soon...</p>{% endblock %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {% block body %}<p>Coming soon...</p>{% endblock %}
+                </div>
             </div>
         </div>
-    </div>
     {% endblock content %}
 
     <hr>
 
     <!-- Footer -->
     {% block footer %}
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <p class="copyright text-muted">Copyright &copy; Chris Scott 2017</p>
+        {% set root = site.get('/') %}
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p class="copyright text-muted">Copyright &copy; {{ root.title }} 2017</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        </footer>
     {% endblock footer %}
 
     {% block bottom %}
