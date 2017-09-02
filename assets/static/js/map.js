@@ -15,31 +15,9 @@ function initmap(startLat, startLon, startZoom) {
     map.addLayer(osm);
 }
 
-function addMarker(pageTitle, pageUrl, pageDate, lat, lon, markerType) {
-    if (markerType == "kayak") {
-        var colourMarker = L.AwesomeMarkers.icon({
-            icon: "blind",
-            markerColor: "red"
-        });
-        var marker = L.marker([lat, lon], {icon: colourMarker}).addTo(map);
-        marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>Kayak<br>" + pageDate);
-    }
-    else if (markerType == "trail") {
-        var colourMarker = L.AwesomeMarkers.icon({
-            icon: "walk",
-            markerColor: "blue"
-        });
-        var marker = L.marker([lat, lon], {icon: colourMarker}).addTo(map);
-        marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>Trail<br>" + pageDate);
-    }
-    else {
-        var colourMarker = L.AwesomeMarkers.icon({
-            icon: "blind",
-            markerColor: "green"
-        });
-        var marker = L.marker([lat, lon], {icon: colourMarker}).addTo(map);
-        marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + pageDate);
-    }
+function addMarker(pageTitle, pageUrl, pageDate, lat, lon, description) {
+    var marker = L.marker([lat, lon]).addTo(map);
+    marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + description + "<br>" + pageDate);
 }
 
 function addRoute(baseUrl, gpx) {

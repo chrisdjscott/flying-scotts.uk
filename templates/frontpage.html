@@ -34,6 +34,10 @@
         <script src="{{ '/static/js/map.min.js'|asseturl }}" type="text/javascript"></script>
         <script type="text/javascript">
             initmap({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
+            {% set blog = site.get('/blog') %}
+            {% for post in blog.children %}
+                addMarker("{{ post.title }}", "{{ post|url }}", "{{ post.date }}", {{ post.latitude }}, {{ post.longitude }}, "{{ post.description }}");
+            {% endfor %}
         </script>
     {% endblock bottom %}
 {% endif %}
