@@ -3,3 +3,14 @@ name = The Flying Scotts
 
 [packages]
 lektor-disqus-comments = 0.2
+
+[servers.testing]
+name = Testing
+enabled = yes
+default = yes
+target = rsync://flying-scotts.uk/srv/http/testing.flying-scotts.uk
+
+[servers.production]
+name = Production
+enabled = no
+target = rsync://flying-scotts.uk/srv/http/flying-scotts.uk
