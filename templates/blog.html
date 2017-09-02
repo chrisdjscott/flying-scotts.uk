@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% from "macros/pagination.html" import render_pagination %}
+{% block title %}{{ this.title }}{% if this.tagline %} - {{ this.tagline }}{% endif %}{% endblock %}
+{% block heading %}
+    {% set root = site.get('/') %}
+    <div class="site-heading">
+        <h1>{{ root.title }}</h1>
+        <hr class="small">
+        <span class="subheading">{{ root.tagline }}</span>
+    </div>
+{% endblock heading %}
+{% block body %}
+    {% for post in this.pagination.items %}
+        <div class="post-preview">
+            <a href="{{ post|url }}">
+                <h2 class="post-title">
+                    {{ post.title }}
+                </h2>
+                <h3 class="post-subtitle">
+                    {{ post.description }}
+                </h3>
+            </a>
+            <p class="post-meta">{{ post.date|dateformat('d MMMM y') }} &mdash; {{ post.author }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    {% if this.pagination.pages > 1 %}
+        {{ render_pagination(this.pagination) }}
+    {% endif %}
+{% endblock body %}

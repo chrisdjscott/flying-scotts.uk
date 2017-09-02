@@ -6,7 +6,7 @@ _model: frontpage
 ---
 renderMap: yes
 ---
-body: View posts on the map below or as a list here (add link...).
+body: View posts on the map below or as a list [here](blog).
 ---
 latitude: -36.894289
 ---
