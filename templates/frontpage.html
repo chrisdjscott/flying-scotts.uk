@@ -1,27 +1,26 @@
 {% extends "layout.html" %}
+
 {% block title %}{{ this.title }}{% if this.tagline %} - {{ this.tagline }}{% endif %}{% endblock %}
+
 {% block head %}
     {{ super() }}
 
     <!-- Leaflet CSS and JavaScript -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
-
-    <!-- Leaflet awesome icons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.css'|asseturl }}" type='text/css'>
-    <script src="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.min.js'|asseturl }}" type='text/javascript'></script>
 {% endblock head %}
+
 {% block heading %}
     <div class="site-heading">
         <h1>{{ this.title }}</h1>
-        <hr class="small">
         <span class="subheading">{{ this.tagline }}</span>
     </div>
 {% endblock heading %}
+
 {% block body %}
     {{ this.body }}
 {% endblock body %}
+
 {% if this.renderMap %}
     {% block content %}
         {{ super() }}
@@ -29,14 +28,17 @@
             <div id="map" style="height: 700px;"></div>
         </div>
     {% endblock content %}
+
     {% block bottom %}
+        {{ super () }}
+
         <!-- Create the map -->
         <script src="{{ '/static/js/map.min.js'|asseturl }}" type="text/javascript"></script>
         <script type="text/javascript">
             initmap({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
             {% set blog = site.get('/blog') %}
             {% for post in blog.children %}
-                addMarker("{{ post.title }}", "{{ post|url }}", "{{ post.date }}", {{ post.latitude }}, {{ post.longitude }}, "{{ post.description }}");
+                addMarker("{{ post.title }}", "{{ post|url }}", "{{ post.date|dateformat('d MMMM y') }}", {{ post.latitude }}, {{ post.longitude }}, "{{ post.description }}");
             {% endfor %}
         </script>
     {% endblock bottom %}

@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {# <meta name="description" content="{{ meta.description|striptags }}"> #}
-    {# <meta name="author" content="{{ config.author }}"> #}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
     {% block head %}
         <title>{% block title %}{% set root = site.get('/') %}{{ this.title }} | {{ root.title }}{% endblock %}</title>
 
-        <!-- Bootstrap Core CSS -->
-        <link href="{{ '/static/css/bootstrap.min.css'|asseturl }}" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="{{ '/static/vendor/bootstrap/css/bootstrap.min.css'|asseturl }}" rel="stylesheet">
 
-        <!-- Leaflet CSS and JavaScript -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
-
-        <!-- Custom CSS -->
-        <link href="{{ '/static/css/clean-blog.min.css'|asseturl }}" rel="stylesheet">
-
-        <!-- Custom Fonts -->
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <!-- Custom fonts for this template -->
+        <link href="{{ '/static/vendor/font-awesome/css/font-awesome.min.css'|asseturl }}" rel="stylesheet" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-        <!-- Leaflet awesome icons -->
-        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css" type="text/css">
-        <link rel="stylesheet" href="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.css'|asseturl }}" type='text/css'>
-        <script src="{{ '/static/vendor/leaflet.awesome-markers/leaflet.awesome-markers.min.js'|asseturl }}" type='text/javascript'></script>
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- Custom styles for this template -->
+        <link href="{{ '/static/css/clean-blog.min.css'|asseturl }}" rel="stylesheet">
     {% endblock head %}
-</head>
 
-<body>
+  </head>
+
+  <body>
+
     <!-- Navigation -->
-    {% block nav %}
-        <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header page-scroll">
-                    <a class="navbar-brand" href="{{ '/'|url }}">Home</a>
-                </div>
-
-                <!-- /.navbar-collapse -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="{{ '/'|url }}">The Flying Scotts</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ '/'|url }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ '/about'|url }}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ '/'|url }}">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ '/blog'|url }}">List</a>
+                    </li>
+                </ul>
             </div>
-            <!-- /.container -->
-        </nav>
-    {% endblock nav %}
+        </div>
+    </nav>
 
     <!-- Page Header -->
-    <header class="intro-header" style="background-image: url('{% block background %}{{ '/static/img/background.jpg'|asseturl }}{% endblock %}') ;">
+    <header class="masthead" style="background-image: url('{% block background %}{{ '/static/img/background.jpg'|asseturl }}{% endblock %}')">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-lg-8 col-md-10 mx-auto">
                     {% block heading %}
                         <div class="post-heading">
                             <h1>{{ this.title }}</h1>
@@ -77,7 +75,7 @@
     {% block content %}
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-lg-8 col-md-10 mx-auto">
                     {% block body %}<p>Coming soon...</p>{% endblock %}
                 </div>
             </div>
@@ -92,7 +90,33 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="col-lg-8 col-md-10 mx-auto">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="{{ bag('social.linkedin') if bag('social.linkedin') else '#' }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ bag('social.facebook') if bag('social.facebook') else '#' }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="{{ bag('social.github') if bag('social.github') else '#' }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
                         <p class="copyright text-muted">Copyright &copy; {{ root.title }} 2017</p>
                     </div>
                 </div>
@@ -100,7 +124,16 @@
         </footer>
     {% endblock footer %}
 
-    {% block bottom %}{% endblock bottom %}
+    {% block bottom %}
+        <!-- Bootstrap core JavaScript -->
+        <script src="{{ '/static/vendor/jquery/jquery.min.js'|asseturl }}"></script>
+        <script src="{{ '/static/vendor/popper/popper.min.js'|asseturl }}"></script>
+        <script src="{{ '/static/vendor/bootstrap/js/bootstrap.min.js'|asseturl }}"></script>
 
-</body>
+        <!-- Custom scripts for this template -->
+        <script src="{{ '/static/js/clean-blog.min.js'|asseturl }}"></script>
+    {% endblock bottom %}
+
+  </body>
+
 </html>
