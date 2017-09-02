@@ -27,6 +27,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-10 mx-auto">
+                        <hr>
                         <div id="map" style="height: 500px;"></div>
                     </div>
                 </div>
@@ -36,26 +37,33 @@
 
     {% if this.gpx %}
         <!-- Map of the route -->
-        <section id="post-route" class="gpx" data-gpx-source="{{ this.gpx|url }}" data-map-target="post-map">
-            <header>
-                <h3>Loading...</h3>
-                <span class="start"></span>
-            </header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <hr>
+                    <section id="post-route" class="gpx" data-gpx-source="{{ this.gpx|url }}" data-map-target="post-map">
+                        <header>
+                            <h3>Loading...</h3>
+                            <span class="start"></span>
+                        </header>
 
-            <article>
-                <div class="map" id="post-map"></div>
-            </article>
+                        <article>
+                            <div class="map" id="post-map"></div>
+                        </article>
 
-            <footer>
-                <ul class="info">
-                    <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
-                    &mdash; <li>Elapsed:&nbsp;<span class="elapsed"></span></li>
-                    &mdash; <li>Moving:&nbsp;<span class="moving"></span></li>
-                    &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
-                    &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
-                </ul>
-            </footer>
-        </section>
+                        <footer>
+                            <ul class="info">
+                                <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
+                                &mdash; <li>Elapsed:&nbsp;<span class="elapsed"></span></li>
+                                &mdash; <li>Moving:&nbsp;<span class="moving"></span></li>
+                                &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
+                                &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
+                            </ul>
+                        </footer>
+                    </section>
+                </div>
+            </div>
+        </div>
     {% endif %}
 
     <!-- Disqus comments -->
