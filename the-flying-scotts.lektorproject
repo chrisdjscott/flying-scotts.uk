@@ -13,5 +13,6 @@ target = rsync://flying-scotts.uk/srv/http/testing.flying-scotts.uk
 
 [servers.production]
 name = Production
-enabled = no
-target = rsync://flying-scotts.uk/srv/http/flying-scotts.uk
+enabled = yes
+target = netlify://flying-scotts.uk
+key = 4a1a4dc12bfa7ffd2ac6479a12ffd395d2c0f75f4531bae632018a8f00a1b5ee
