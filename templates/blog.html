@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
+
 {% from "macros/pagination.html" import render_pagination %}
+
 {% block title %}{{ this.title }}{% if this.tagline %} - {{ this.tagline }}{% endif %}{% endblock %}
+
 {% block heading %}
     {% set root = site.get('/') %}
     <div class="site-heading">
@@ -9,6 +12,7 @@
         <span class="subheading">{{ root.tagline }}</span>
     </div>
 {% endblock heading %}
+
 {% block body %}
     {% for post in this.pagination.items %}
         <div class="post-preview">

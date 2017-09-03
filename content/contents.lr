@@ -8,8 +8,8 @@ renderMap: yes
 ---
 body: View posts on the map below or as a list [here](blog).
 ---
-latitude: -36.894289
+latitude: -40.794002
 ---
-longitude: 174.716553
+longitude: 173.487510
 ---
-zoom: 10
+zoom: 5

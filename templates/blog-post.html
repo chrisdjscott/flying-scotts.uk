@@ -15,33 +15,15 @@
 {% block background %}{{ this.background|url }}{% endblock %}
 
 {% block content %}
-    <article>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    {{ this.body }}
-                </div>
-            </div>
-        </div>
-        {% if not this.gpx and this.latitude and this.longitude %}
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-10 mx-auto">
-                        <hr>
-                        <div id="map" style="height: 500px;"></div>
-                    </div>
-                </div>
-            </div>
-        {% endif %}
-    </article>
+    {{ super() }}
 
-    {% if this.gpx %}
+    {% if this.gpx or (this.latitude and this.longitude) %}
         <!-- Map of the route -->
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <hr>
-                    <section id="post-route" class="gpx" data-gpx-source="{{ this.gpx|url }}" data-map-target="post-map">
+                    <section id="post-route" class="gpx" {% if this.gpx %}data-gpx-source="{{ this.gpx|url }}" {% endif %}data-map-target="post-map">
                         <header>
                             <h3>Loading...</h3>
                             <span class="start"></span>
@@ -51,15 +33,17 @@
                             <div class="map" id="post-map"></div>
                         </article>
 
-                        <footer>
-                            <ul class="info">
-                                <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
-                                &mdash; <li>Elapsed:&nbsp;<span class="elapsed"></span></li>
-                                &mdash; <li>Moving:&nbsp;<span class="moving"></span></li>
-                                &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
-                                &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
-                            </ul>
-                        </footer>
+                        {% if this.gpx %}
+                            <footer>
+                                <ul class="info">
+                                    <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
+                                    &mdash; <li>Elapsed:&nbsp;<span class="elapsed"></span></li>
+                                    &mdash; <li>Moving:&nbsp;<span class="moving"></span></li>
+                                    &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
+                                    &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
+                                </ul>
+                            </footer>
+                        {% endif %}
                     </section>
                 </div>
             </div>
@@ -81,15 +65,17 @@
 {% block bottom %}
     {{ super() }}
 
-    <script src="{{ '/static/js/map.min.js'|asseturl }}" type="text/javascript"></script>
-    {% if this.gpx %}
+    {% if this.gpx or (this.latitude and this.longitude) %}
+        <script src="{{ '/static/js/map.min.js'|asseturl }}" type="text/javascript"></script>
         <script type="text/javascript">
-            display_gpx("{{ '/static'|url }}", "{{ this.title }}", document.getElementById("post-route"));
-        </script>
-    {% elif this.latitude and this.longitude %}
-        <script type="text/javascript">
-            initmap({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
-            addMarker("{{ this.title }}", "{{ this|url }}", "{{ this.date|dateformat('d MMMM y') }}", {{ this.latitude }}, {{ this.longitude }});
+            init_map(document.getElementById("post-route"));
+            {% if this.gpx %}
+                add_gpx(document.getElementById("post-route"), "{{ this.title }}");
+            {% else %}
+                add_marker("{{ this.title }}", "{{ this|url }}", "{{ this.date|dateformat('d MMMM y') }}", {{ this.latitude }}, {{ this.longitude }}, "{{ this.description }}");
+                set_view({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
+                set_title(document.getElementById("post-route"), "{{ this.title }}");
+            {% endif %}
         </script>
     {% endif %}
 {% endblock bottom %}

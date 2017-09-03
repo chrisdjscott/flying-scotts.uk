@@ -1,39 +1,8 @@
+// see https://switch2osm.org/using-tiles/getting-started-with-leaflet/
+
 var map;
 
-// see https://switch2osm.org/using-tiles/getting-started-with-leaflet/
-function initmap(startLat, startLon, startZoom) {
-    // set up the map
-    map = new L.Map('map');
-
-    // create the tile layer with correct attribution
-    var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
-    var osm = new L.TileLayer(osmUrl, {minZoom: 5, maxZoom: 16, attribution: osmAttrib});
-
-    // start the map in South-East England
-    map.setView(new L.LatLng(startLat, startLon), startZoom);
-    map.addLayer(osm);
-}
-
-function addMarker(pageTitle, pageUrl, pageDate, lat, lon, description) {
-    var marker = L.marker([lat, lon]).addTo(map);
-    marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + description + "<br>" + pageDate);
-}
-
-function addRoute(baseUrl, gpx) {
-    new L.GPX(gpx, {
-        async: true,
-        marker_options: {
-            startIconUrl: baseUrl + "/img/pin-icon-start.png",
-            endIconUrl: baseUrl + "/img/pin-icon-end.png",
-            shadowUrl: baseUrl + "/img/pin-shadow.png"
-        }
-    }).on('loaded', function(e) {
-        map.fitBounds(e.target.getBounds());
-    }).addTo(map);
-}
-
-function display_gpx(baseUrl, title, elt) {
+function init_map(elt) {
     if (!elt) return;
 
     // first we add the map
@@ -46,8 +15,34 @@ function display_gpx(baseUrl, title, elt) {
     // create the tile layer with correct attribution
     var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
     var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
-    var osm = new L.TileLayer(osmUrl, {minZoom: 6, maxZoom: 17, attribution: osmAttrib});
+    var osm = new L.TileLayer(osmUrl, {minZoom: 1, maxZoom: 16, attribution: osmAttrib});
     map.addLayer(osm);
+}
+
+
+function add_marker(pageTitle, pageUrl, pageDate, lat, lon, description) {
+    var marker = L.marker([lat, lon]).addTo(map);
+    marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + description + "<br>" + pageDate);
+}
+
+
+function set_view(startLat, startLon, startZoom) {
+    map.setView(new L.LatLng(startLat, startLon), startZoom);
+}
+
+
+function set_title(elt, title) {
+    if (!elt) return;
+    elt.getElementsByTagName('h3')[0].textContent = title;
+}
+
+
+function add_gpx(elt, title) {
+    if (!elt) return;
+
+    // first we add the map
+    var mapid = elt.getAttribute('data-map-target');
+    if (!mapid) return;
 
     // now we add the GPX track
     var url = elt.getAttribute('data-gpx-source');
@@ -61,9 +56,9 @@ function display_gpx(baseUrl, title, elt) {
     new L.GPX(url, {
         async: true,
         marker_options: {
-            startIconUrl: baseUrl + "/img/pin-icon-start.png",
-            endIconUrl: baseUrl + "/img/pin-icon-end.png",
-            shadowUrl: baseUrl + "/img/pin-shadow.png"
+            startIconUrl: "/static/img/pin-icon-start.png",
+            endIconUrl: "/static/img/pin-icon-end.png",
+            shadowUrl: "/static/img/pin-shadow.png"
         }
     }).on('loaded', function(e) {
         var gpx = e.target;
