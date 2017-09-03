@@ -3,6 +3,7 @@ name = The Flying Scotts
 
 [packages]
 lektor-disqus-comments = 0.2
+lektor-netlify = 0.1
 
 [servers.testing]
 name = Testing
