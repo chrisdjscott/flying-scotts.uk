@@ -62,8 +62,8 @@
                     {% block heading %}
                         <div class="post-heading">
                             <h1>{{ this.title }}</h1>
+                            <hr class="small">
                             <h2 class="subheading">{% if this.description %}{{ this.description }}{% endif %}</h2>
-                            <span class="meta">{% if this.date %}{{ this.date|dateformat('d MMMM y') }}{% endif %}</span>
                         </div>
                     {% endblock heading %}
                 </div>
