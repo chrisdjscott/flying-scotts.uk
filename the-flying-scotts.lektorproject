@@ -10,7 +10,7 @@ lektor-google-analytics = 0.1.3
 name = Testing
 enabled = yes
 default = yes
-target = rsync://flying-scotts.uk/srv/http/testing.flying-scotts.uk
+target = rsync://testing.flying-scotts.uk/srv/http/testing.flying-scotts.uk
 
 [servers.production]
 name = Production
