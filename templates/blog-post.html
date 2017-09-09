@@ -58,6 +58,20 @@
         </div>
     {% endif %}
 
+    <!-- Modal for images -->
+    <div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" class="enlargeImageModalSource" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Disqus comments -->
     <div class="container">
         <div class="row">
@@ -97,9 +111,14 @@
             .wrap("<div class='embed-responsive embed-responsive-16by9'/>");
     </script>
 
-    <!-- fluid width for embedded google photos -->
+    <!-- Google Photos - fluid width, centred and modal popup -->
     <script type="text/javascript">
         $("img[src*='googleusercontent.com']")
-            .addClass("img-fluid");
+            .addClass("img-fluid")
+            .css({ cursor: 'zoom-in', display: 'block',  margin: '0 auto' })
+            .on('click', function() {
+                $('.enlargeImageModalSource').attr('src', $(this).attr('src'));
+                $('#enlargeImageModal').modal('show');
+            });
     </script>
 {% endblock bottom %}
