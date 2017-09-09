@@ -96,4 +96,10 @@
             .removeAttr('width')
             .wrap("<div class='embed-responsive embed-responsive-16by9'/>");
     </script>
+
+    <!-- fluid width for embedded google photos -->
+    <script type="text/javascript">
+        $("img[src*='googleusercontent.com']")
+            .addClass("img-fluid");
+    </script>
 {% endblock bottom %}
