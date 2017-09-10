@@ -12,7 +12,7 @@
     <link href="{{ '/static/css/map.min.css'|asseturl }}" rel="stylesheet">
 {% endblock head %}
 
-{% block background %}{{ this.image|url }}{% endblock %}
+{% block background %}{% if this.image.startswith('https') %}{{ this.image }}{% else %}{{ this.image|url }}{% endif %}{% endblock %}
 
 {% block heading %}
     <div class="post-heading">
