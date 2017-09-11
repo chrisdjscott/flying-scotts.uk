@@ -5,8 +5,10 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Our kayaking, trail running and hiking adventures">
+    <meta name="author" content="Chris and Gemma Scott">
+
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed for The Flying Scotts" href="{{ '/feed.xml'|url }}" />
 
     {% block head %}
         <title>{% block title %}{% set root = site.get('/') %}{{ this.title }} | {{ root.title }}{% endblock %}</title>
@@ -114,6 +116,13 @@
                                         <i class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                     </span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="https://blogtrottr.com/?subscribe={{ '/feed.xml'|url(external=True) }}" title='Get this feed delivered by email'>
+                                    <img src="{{ '/static/img/blogtrottr-button-91x17px.gif'|asseturl }}" alt='Blogtrottr' />
                                 </a>
                             </li>
                         </ul>
