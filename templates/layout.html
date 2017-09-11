@@ -8,7 +8,7 @@
     <meta name="description" content="Our kayaking, trail running and hiking adventures">
     <meta name="author" content="Chris and Gemma Scott">
 
-    <link rel="alternate" type="application/atom+xml" title="Atom Feed for The Flying Scotts" href="/feed.xml" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed for The Flying Scotts" href="{{ '/feed.xml'|url }}" />
 
     {% block head %}
         <title>{% block title %}{% set root = site.get('/') %}{{ this.title }} | {{ root.title }}{% endblock %}</title>
