@@ -1,3 +1,8 @@
+# redirects after moving the posts to root from /blog
+/blog /
+/blog/* /:splat
+
+# redirects to the old website
 /2014/12/28/christmas-run-in-hamsterley-forest https://old.flying-scotts.uk/2014/12/28/christmas-run-in-hamsterley-forest
 /2015/01/04/edwinstowe-run https://old.flying-scotts.uk/2015/01/04/edwinstowe-run
 /2015/01/18/the-squires-walk-run https://old.flying-scotts.uk/2015/01/18/the-squires-walk-run
