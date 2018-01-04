@@ -1,12 +1,14 @@
+_model: blog
+---
 title: The Flying Scotts
+---
+author: Chris and Gemma Scott
 ---
 tagline: Chris and Gemma Scott
 ---
-_model: frontpage
+summary: Our kayaking, trail running and hiking adventures
 ---
 renderMap: yes
----
-body: View posts on the map below or as a list [here](blog).
 ---
 latitude: -40.794002
 ---
