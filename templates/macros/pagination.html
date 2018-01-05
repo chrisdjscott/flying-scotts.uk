@@ -21,7 +21,7 @@
                 {% if pagination.page + 1 != pagination.pages - 1 %}
                     ...&nbsp;
                 {% endif %}
-                <a href="{{ pagination.for_page(pagination.pages)|url }}">{{ pagination.pages }}</a>
+                <a href="{{ pagination.for_page(pagination.pages)|url }}">{{ pagination.pages }}&nbsp;</a>
             {% endif %}
             <a href="{{ pagination.next|url }}">&raquo;</a>
         {% else %}
