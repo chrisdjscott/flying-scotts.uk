@@ -40,7 +40,9 @@ def build(ctx):
     shutil.copy(redirect_input, redirect_output)
 
 
-@invoke.task
+@invoke.task(help={'title': 'Title of the post (compulsory)', 'slug': 'Custom slug (automatic)',
+    'add_gpx': 'Add gpx file with the same name (false)', 'description': 'Post description (empty)',
+    'date': 'Post date YYYY-MM-DD (empty)'})
 def newpost(ctx, title, slug=None, add_gpx=False, description=None, date=None):
     def slugify(s):
         s = s.lower()
@@ -56,6 +58,13 @@ def newpost(ctx, title, slug=None, add_gpx=False, description=None, date=None):
 
     # slug for the post
     post_slug = slug if slug is not None else slugify(title)
+
+    print('Creating new post:')
+    print('  title:', title)
+    print('  slug:', post_slug)
+    print('  add_gpx:', add_gpx)
+    print('  description:', description)
+    print('  date:', date)
 
     # check the branch and switch to a new one
     #   1. do a status and fetch
