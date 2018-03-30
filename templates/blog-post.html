@@ -58,21 +58,6 @@
         </div>
     {% endif %}
 
-    <!-- Modal for images -->
-    <div class="modal fade" id="enlargeImageModal" tabindex="-1" role="dialog" aria-labelledby="enlargeImageModal" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span class="enlargeImageModalTitle"></span>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body">
-                    <img src="" class="enlargeImageModalSource" style="width: 100%;">
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Disqus comments -->
     <div class="container">
         <div class="row">
@@ -100,6 +85,13 @@
                 set_view({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
                 set_title(document.getElementById("post-route"), "{{ this.title }}");
             {% endif %}
+            {% for image in this.attachments.images %}
+                {% if image.exif.location %}
+                    <!-- {{ image.thumbnail(100)|url }} has location {{ image.exif.latitude }} {{ image.exif.longitude }} -->
+                {% else %}
+                    <!-- {{ image.thumbnail(100)|url }} no location-->
+                {% endif %}
+            {% endfor %}
         </script>
     {% endif %}
 
@@ -112,15 +104,14 @@
             .wrap("<div class='embed-responsive embed-responsive-16by9'/>");
     </script>
 
-    <!-- Google Photos - fluid width, centred and modal popup -->
+    <!-- All images - fluid width, centred and click to view full size -->
     <script type="text/javascript">
-        $("img[src*='googleusercontent.com']")
+        $("img")
             .addClass("img-fluid")
-            .css({ cursor: 'zoom-in', display: 'block',  margin: '0 auto' })
-            .on('click', function() {
-                $('.enlargeImageModalSource').attr('src', $(this).attr('src') + '=w800');
-                $('.enlargeImageModalTitle').text($(this).attr('alt'));
-                $('#enlargeImageModal').modal('show');
+            .wrap(function() {
+                return $('<a />', {
+                    "href": $(this).attr('src')
+                });
             });
     </script>
 {% endblock bottom %}
