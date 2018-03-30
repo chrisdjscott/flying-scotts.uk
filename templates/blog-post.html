@@ -108,6 +108,9 @@
     <script type="text/javascript">
         $("img")
             .addClass("img-fluid")
+            .attr("title", function() {
+                return $(this).attr("alt");
+            })
             .wrap(function() {
                 return $('<a />', {
                     "href": $(this).attr('src')
