@@ -37,6 +37,11 @@ function init_map(elt) {
 }
 
 
+function add_fullscreen_control() {
+    map.addControl(new L.Control.Fullscreen());
+}
+
+
 function add_marker(pageTitle, pageUrl, pageDate, lat, lon, description) {
     var marker = L.marker([lat, lon]).addTo(map);
     marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + description + "<br>" + pageDate);
