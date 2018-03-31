@@ -107,7 +107,7 @@ function add_photo_layer(photos) {
 
     photoLayer = L.photo.cluster().on('click', function(evt) {
         var photo = evt.layer.photo;
-        var template = '<a href="{url}"><img src="{url}" class="img-fluid" /></a>';
+        var template = '<a href="{url}"><img src="{url}" class="img-fluid" /></a><p>{description}</p>';
         evt.layer.bindPopup(L.Util.template(template, photo), {
             minWidth: 400,
         }).openPopup();

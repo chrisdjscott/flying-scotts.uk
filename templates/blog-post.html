@@ -101,7 +101,8 @@
                         "lat": {{ image.exif.latitude }},
                         "lng": {{ image.exif.longitude }},
                         "thumbnail": "{{ image.thumbnail(64,64)|url }}",
-                        "url": "{{ image|url }}"
+                        "url": "{{ image|url }}",
+                        "description": "{{ image.description }}",
                     });
                 {% endif %}
             {% endfor %}
