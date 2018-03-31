@@ -3,6 +3,7 @@
 var map;
 var photoLayer;
 var control;
+var markers;
 
 function init_map(elt) {
     if (!elt) return;
@@ -26,6 +27,25 @@ function init_map(elt) {
 function add_marker(pageTitle, pageUrl, pageDate, lat, lon, description) {
     var marker = L.marker([lat, lon]).addTo(map);
     marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + description + "<br>" + pageDate);
+}
+
+
+function init_cluster() {
+    markers = L.markerClusterGroup({
+        maxClusterRadius: 40,
+    });
+}
+
+
+function add_marker_to_cluster(pageTitle, pageUrl, pageDate, lat, lon, description) {
+    var marker = L.marker([lat, lon]);
+    marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + description + "<br>" + pageDate);
+    markers.addLayer(marker);
+}
+
+
+function add_cluster_to_map() {
+    map.addLayer(markers);
 }
 
 
@@ -82,7 +102,7 @@ function add_gpx(elt, title) {
     }).addTo(map);
 }
 
-function addPhotoLayer(photos) {
+function add_photo_layer(photos) {
     if (photos.length == 0) return;
 
     photoLayer = L.photo.cluster().on('click', function(evt) {
