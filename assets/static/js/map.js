@@ -110,6 +110,8 @@ function add_photo_layer(photos) {
         var template = '<a href="{url}"><img src="{url}" class="img-fluid" /></a><p>{description}</p>';
         evt.layer.bindPopup(L.Util.template(template, photo), {
             minWidth: 400,
+            className: 'leaflet-popup-photo',
+            closeButton: false,
         }).openPopup();
     });
 
