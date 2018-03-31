@@ -1,6 +1,7 @@
 // see https://switch2osm.org/using-tiles/getting-started-with-leaflet/
 
 var map;
+var photoLayer;
 
 function init_map(elt) {
     if (!elt) return;
@@ -75,4 +76,18 @@ function add_gpx(elt, title) {
         _c('ascent').textContent = gpx.get_elevation_gain().toFixed(0);
 
     }).addTo(map);
+}
+
+function addPhotoLayer(photos) {
+    if (photos.length == 0) return;
+
+    photoLayer = L.photo.cluster().on('click', function(evt) {
+        var photo = evt.layer.photo;
+        var template = '<img src="{url}" class="img-fluid" /></a>';
+        evt.layer.bindPopup(L.Util.template(template, photo), {
+            minWidth: 400
+        }).openPopup();
+    });
+
+    photoLayer.add(photos).addTo(map);
 }
