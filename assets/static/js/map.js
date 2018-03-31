@@ -14,13 +14,26 @@ function init_map(elt) {
 
     // set up the map
     map = new L.Map(mapid);
-    control = false;
 
-    // create the tile layer with correct attribution
-    var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    var osmAttrib='Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors';
-    var osm = new L.TileLayer(osmUrl, {minZoom: 1, maxZoom: 16, attribution: osmAttrib});
-    map.addLayer(osm);
+    // default base layer
+    var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            minZoom: 1,
+            maxZoom: 16,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+    });
+    map.addLayer(OpenStreetMap_Mapnik);
+
+    // satellite base layer
+    var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
+    // add control
+    baseMaps = {
+        "OpenStreetMap": OpenStreetMap_Mapnik,
+        "Satellite": Esri_WorldImagery,
+    }
+    control = L.control.layers(baseMaps, null).addTo(map);
 }
 
 
@@ -74,10 +87,6 @@ function add_gpx(elt, title) {
     function _t(t) { return elt.getElementsByTagName(t)[0]; }
     function _c(c) { return elt.getElementsByClassName(c)[0]; }
 
-    if (control === false) {
-        control = L.control.layers(null, null).addTo(map);
-    }
-
     new L.GPX(url, {
         async: true,
         marker_options: {
@@ -115,10 +124,6 @@ function add_photo_layer(photos) {
         }).openPopup();
     });
 
-    if (control === false) {
-        control = L.control.layers(null, null).addTo(map);
-    }
     control.addOverlay(photoLayer, "Photos");
-
     photoLayer.add(photos).addTo(map);
 }
