@@ -2,6 +2,7 @@
 
 var map;
 var photoLayer;
+var control;
 
 function init_map(elt) {
     if (!elt) return;
@@ -12,6 +13,7 @@ function init_map(elt) {
 
     // set up the map
     map = new L.Map(mapid);
+    control = false;
 
     // create the tile layer with correct attribution
     var osmUrl='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
@@ -52,7 +54,9 @@ function add_gpx(elt, title) {
     function _t(t) { return elt.getElementsByTagName(t)[0]; }
     function _c(c) { return elt.getElementsByClassName(c)[0]; }
 
-    var control = L.control.layers(null, null).addTo(map);
+    if (control === false) {
+        control = L.control.layers(null, null).addTo(map);
+    }
 
     new L.GPX(url, {
         async: true,
@@ -88,6 +92,11 @@ function addPhotoLayer(photos) {
             minWidth: 400,
         }).openPopup();
     });
+
+    if (control === false) {
+        control = L.control.layers(null, null).addTo(map);
+    }
+    control.addOverlay(photoLayer, "Photos");
 
     photoLayer.add(photos).addTo(map);
 }
