@@ -125,7 +125,6 @@ function add_photo_layer(photos) {
         evt.layer.bindPopup(L.Util.template(template, photo), {
             minWidth: 400,
             className: 'leaflet-popup-photo',
-            closeButton: false,
         }).openPopup();
     });
 
