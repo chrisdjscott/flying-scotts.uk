@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from __future__ import print_function
 import os
+import sys
 import shutil
 import re
 import datetime
@@ -143,3 +144,35 @@ def minify(ctx):
         fpath_out = os.path.join(assets, root + '.min' + ext)
         with open(fpath_out, "w") as fout:
             invoke.run("minify {0}".format(fpath_in), out_stream=fout, echo=True)
+
+
+@invoke.task
+def photos(ctx, filename):
+    print("Preparing photos: %s" % filename)
+
+    invoke.run('mogrify -resize "1920>" -quality 75% -interlace Plane {0}'.format(filename), echo=True)
+    invoke.run('exiftool -overwrite_original_in_place -all= -tagsFromFile @ -GPSLatitudeRef -GPSLongitudeRef -GPSLatitude -GPSLongitude -GPSInfo {0}'.format(filename), echo=True)
+
+
+@invoke.task
+def setgps(ctx, filename, lat, lon):
+    from pexif import JpegFile
+
+    try:
+        ef = JpegFile.fromFile(filename)
+        ef.set_geo(float(lat), float(lon))
+    except IOError:
+        type, value, traceback = sys.exc_info()
+        print("Error opening file:", value)
+        raise invoke.Exit(1)
+    except JpegFile.InvalidFile:
+        type, value, traceback = sys.exc_info()
+        print("Error opening file:", value)
+        raise invoke.Exit(2)
+
+    try:
+        ef.writeFile(filename)
+    except IOError:
+        type, value, traceback = sys.exc_info()
+        print("Error saving file:", value)
+        raise invoke.Exit(3)
