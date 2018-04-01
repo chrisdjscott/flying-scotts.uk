@@ -108,9 +108,8 @@ function add_gpx(elt, title) {
         _c('start').textContent = gpx.get_start_time().toDateString() + ', '
             + gpx.get_start_time().toLocaleTimeString();
         _c('distance').textContent = (gpx.get_distance() / 1000.0).toFixed(2);
-        _c('elapsed').textContent = gpx.get_duration_string(gpx.get_total_time());
-        _c('moving').textContent = gpx.get_duration_string(gpx.get_moving_time());
-        _c('pace').textContent = gpx.get_duration_string(gpx.get_moving_pace(), true);
+        _c('duration').textContent = gpx.get_duration_string(gpx.get_total_time());
+        _c('pace').textContent = gpx.get_duration_string(gpx.get_total_time() / (gpx.get_distance() / 1000.0), true);
         _c('ascent').textContent = gpx.get_elevation_gain().toFixed(0);
 
     }).addTo(map);
