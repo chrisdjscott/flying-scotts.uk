@@ -38,3 +38,11 @@
 .leaflet-popup-photo p {
 	margin: 5px 0 0 0;
 }
+
+/* fluid image that works well for portrait photos too */
+.img-fluid-both {
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+}
