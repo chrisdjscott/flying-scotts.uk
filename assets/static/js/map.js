@@ -92,14 +92,23 @@ function add_gpx(elt, title) {
     function _t(t) { return elt.getElementsByTagName(t)[0]; }
     function _c(c) { return elt.getElementsByClassName(c)[0]; }
 
-    new L.GPX(url, {
+    var elev = L.control.elevation({
+        position: "bottomright",
+        theme: "steelblue-theme",
+        collapsed: true,
+    });
+    elev.addTo(map);
+
+    var gpx = new L.GPX(url, {
         async: true,
         marker_options: {
             startIconUrl: "/static/img/pin-icon-start.png",
             endIconUrl: "/static/img/pin-icon-end.png",
             shadowUrl: "/static/img/pin-shadow.png"
         }
-    }).on('loaded', function(e) {
+    });
+
+    gpx.on('loaded', function(e) {
         var gpx = e.target;
         map.fitBounds(gpx.getBounds());
         control.addOverlay(gpx, title);
@@ -112,7 +121,13 @@ function add_gpx(elt, title) {
         _c('pace').textContent = gpx.get_duration_string(gpx.get_total_time() / (gpx.get_distance() / 1000.0), true);
         _c('ascent').textContent = gpx.get_elevation_gain().toFixed(0);
 
-    }).addTo(map);
+    });
+
+    gpx.on("addline", function(e) {
+        elev.addData(e.line);
+    });
+
+    gpx.addTo(map);
 }
 
 function add_photo_layer(photos) {
