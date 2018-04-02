@@ -86,6 +86,26 @@
             </div>
         </div>
     </div>
+
+    <!-- previous/next buttons -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <hr>
+                {% set siblings = this.get_siblings() %}
+                {% if siblings.next_page %}
+                    <a class="page-link float-left" href="{{ siblings.next_page|url }}" title="{{ siblings.next_page.title }}">Previous</a>
+                {% else %}
+                    <span class="page-item disabled"><span class="page-link float-left">Previous</span></span>
+                {% endif %}
+                {% if siblings.prev_page %}
+                    <a class="page-link float-right" href="{{ siblings.prev_page|url }}" title="{{ siblings.prev_page.title }}">Next</a>
+                {% else %}
+                    <span class="page-item disabled"><span class="page-link float-right">Next</span></span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock content %}
 
 {% block bottom %}
