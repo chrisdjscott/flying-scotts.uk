@@ -72,6 +72,14 @@ function set_view(startLat, startLon, startZoom) {
 }
 
 
+function set_view_nz() {
+    map.fitBounds([
+        [-47.32,166.32],
+        [-34.36,178.63]
+    ]);
+}
+
+
 function set_title(elt, title) {
     if (!elt) return;
     elt.getElementsByTagName('h3')[0].textContent = title;

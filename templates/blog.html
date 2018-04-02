@@ -92,7 +92,7 @@
             {% for post in this.children.filter(F._model == 'blog-post') %}
                 add_marker_to_cluster("{{ post.title }}", "{{ post|url }}", "{{ post.date|dateformat('d MMMM y') }}", {{ post.latitude }}, {{ post.longitude }}, "{{ post.description }}");
             {% endfor %}
-            set_view({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
+            set_view_nz();
             add_cluster_to_map();
         </script>
     {% endif %}
