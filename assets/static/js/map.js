@@ -72,6 +72,14 @@ function set_view(startLat, startLon, startZoom) {
 }
 
 
+function set_view_nz() {
+    map.fitBounds([
+        [-47.32,166.32],
+        [-34.36,178.63]
+    ]);
+}
+
+
 function set_title(elt, title) {
     if (!elt) return;
     elt.getElementsByTagName('h3')[0].textContent = title;
@@ -135,7 +143,7 @@ function add_photo_layer(photos) {
 
     photoLayer = L.photo.cluster().on('click', function(evt) {
         var photo = evt.layer.photo;
-        var template = '<a href="{url}"><img src="{url}" class="img-fluid" /></a><p>{description}</p>';
+        var template = '<a href="{url}"><img src="{url}" class="img-fluid-both" /></a><p>{description}</p>';
         evt.layer.bindPopup(L.Util.template(template, photo), {
             minWidth: 400,
             className: 'leaflet-popup-photo',
