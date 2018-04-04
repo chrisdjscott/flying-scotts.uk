@@ -150,7 +150,7 @@ def minify(ctx):
 def photos(ctx, filename):
     print("Preparing photos: %s" % filename)
 
-    invoke.run('mogrify -resize "1920x1920>" -quality 75% -interlace Plane {0}'.format(filename), echo=True)
+    invoke.run('mogrify -resize "1920x1920>" -quality 70% -interlace Plane {0}'.format(filename), echo=True)
     invoke.run('exiftool -overwrite_original_in_place -all= -tagsFromFile @ -GPSLatitudeRef -GPSLongitudeRef -GPSLatitude -GPSLongitude -GPSInfo {0}'.format(filename), echo=True)
 
 
