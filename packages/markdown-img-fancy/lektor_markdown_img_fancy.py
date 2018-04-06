@@ -42,6 +42,11 @@ class MarkdownImgFancyPlugin(Plugin):
 
                 # add anchor
                 img_tag = '<a href="{0}">'.format(img_src) + img_tag + "</a>"
+                if cfg.get('images.ekko-lightbox'):
+                    soup = BeautifulSoup(img_tag)
+                    soup.a['data-toggle'] = 'lightbox'
+
+                    img_tag = str(soup)
 
                 return img_tag
 
