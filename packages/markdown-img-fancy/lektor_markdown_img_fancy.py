@@ -15,9 +15,11 @@ class MarkdownImgFancyPlugin(Plugin):
         class ImageFancyMixin(object):
             def image(renderer, src, title, text):
                 # get config
+                cfg = self.get_config()
 
-
-                #TODO: set title to alt already, if that option is set
+                # set title to alt, if not set
+                if not title:
+                    title = text
 
                 # get the default img tag
                 img_tag = super(ImageFancyMixin, renderer).image(src, title, text)
@@ -32,7 +34,9 @@ class MarkdownImgFancyPlugin(Plugin):
                 #TODO: add attributes to anchor
 
                 # add classes to the img
-                soup.img['class'] = 'img-fluid-both'
+                img_class = cfg.get('images.class')
+                if img_class:
+                    soup.img['class'] = img_class
 
                 # convert soup back to string
                 img_tag = str(soup)
