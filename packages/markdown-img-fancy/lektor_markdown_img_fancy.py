@@ -24,13 +24,12 @@ class MarkdownImgFancyPlugin(Plugin):
                 # get the default img tag
                 img_tag = super(ImageFancyMixin, renderer).image(src, title, text)
 
-                #TODO: only do the following if we are changing something
+                # parse tag
                 soup = BeautifulSoup(img_tag, 'html.parser')
+                img_src = soup.img['src']
 
                 #TODO: change src to thumbnail
-                #TODO: add classes to img
                 #TODO: create thumbnail?
-                #TODO: create anchor linking to full image
                 #TODO: add attributes to anchor
 
                 # add classes to the img
@@ -40,6 +39,9 @@ class MarkdownImgFancyPlugin(Plugin):
 
                 # convert soup back to string
                 img_tag = str(soup)
+
+                # add anchor
+                img_tag = '<a href="{0}">'.format(img_src) + img_tag + "</a>"
 
                 return img_tag
 
