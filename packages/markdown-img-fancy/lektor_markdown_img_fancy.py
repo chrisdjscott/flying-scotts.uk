@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os
+
 from markupsafe import escape
 from werkzeug.urls import url_parse
 from bs4 import BeautifulSoup
@@ -25,12 +27,15 @@ class MarkdownImgFancyPlugin(Plugin):
                 img_tag = super(ImageFancyMixin, renderer).image(src, title, text)
 
                 # parse tag
-                soup = BeautifulSoup(img_tag, 'html.parser')
+                soup = BeautifulSoup(img_tag, "html.parser")
                 img_src = soup.img['src']
 
-                #TODO: change src to thumbnail
-                #TODO: create thumbnail?
                 #TODO: add attributes to anchor
+
+                # display thumbnail for local images
+                if not src.startswith("https"):
+                    root, ext = os.path.splitext(img_src)
+                    soup.img['src'] = root + '-thumbnail' + ext
 
                 # add classes to the img
                 img_class = cfg.get('images.class')
@@ -43,7 +48,7 @@ class MarkdownImgFancyPlugin(Plugin):
                 # add anchor
                 img_tag = '<a href="{0}">'.format(img_src) + img_tag + "</a>"
                 if cfg.get('images.ekko-lightbox'):
-                    soup = BeautifulSoup(img_tag)
+                    soup = BeautifulSoup(img_tag, "html.parser")
                     soup.a['data-toggle'] = 'lightbox'
 
                     img_tag = str(soup)
