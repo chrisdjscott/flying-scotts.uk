@@ -29,6 +29,12 @@
 
     <!-- Custom map CSS -->
     <link href="{{ '/static/css/map.min.css'|asseturl }}" rel="stylesheet">
+
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha256-PZLhE6wwMbg4AB3d35ZdBF9HD/dI/y4RazA3iRDurss=" crossorigin="anonymous" />
+
+    <!-- gallery -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css" integrity="sha256-ZKOGvp7YVwX26g2d0ooDvbSBQSEiIi4Bd9FuK+12Zk0=" crossorigin="anonymous" />
 {% endblock head %}
 
 {% block background %}{% if this.image.startswith('https') %}{{ this.image }}{% else %}{{ this.image|url }}{% endif %}{% endblock %}
@@ -71,6 +77,24 @@
                             </footer>
                         {% endif %}
                     </section>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if this.attachments.images.count() > 3 %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <hr>
+                    <h2>Gallery</h2>
+                    <div id="gallery" class="justified-gallery">
+                        {% for image in this.attachments.images %}
+                            <a class="gallery-image" href="{{ image|url }}" title="{{ image.description }}">
+                                <img src="{{ image.thumbnail(300, 300, quality=60)|url }}" alt="{{ image.description }}">
+                            </a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -154,17 +178,29 @@
             .wrap("<div class='embed-responsive embed-responsive-16by9'/>");
     </script>
 
-    <!-- All images - fluid width, title set to alt and click to view full size -->
+    <!-- magnific popup for images -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha256-P93G0oq6PBPWTP1IR8Mz/0jHHUpaWL0aBJTKauisG7Q=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $("img")
-            .addClass("img-fluid-both rounded mx-auto d-block")
-            .attr("title", function() {
-                return $(this).attr("alt");
-            })
-            .wrap(function() {
-                return $('<a />', {
-                    "href": $(this).attr('src')
-                });
+        $(document).ready(function() {
+            $('.image-link').magnificPopup({
+                type: 'image',
             });
+        });
+    </script>
+
+    <!-- justified gallery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" integrity="sha256-bIPvSCQ7+G5GbIXDt2B+9AMpCmFtxTVLU+aWAIPzL8I=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $('#gallery').justifiedGallery({
+            rowHeight : 200,
+            lastRow : 'nojustify',
+            margins : 3
+        }).magnificPopup({
+            type:'image',
+            delegate: '.gallery-image',
+            gallery: {
+                enabled: true
+            },
+        });
     </script>
 {% endblock bottom %}
