@@ -18,8 +18,8 @@ ROOT_DIR = os.path.dirname(__file__)
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'build')
 
 
-@invoke.task(help={'clean': 'Perform a clean first and then build'})
-def build(ctx, clean=False):
+@invoke.task(help={'clean': 'Perform a clean first and then build', 'verbose': "Enable verbose build"})
+def build(ctx, clean=False, verbose=False):
     """
     Build the website.
 
@@ -32,7 +32,10 @@ def build(ctx, clean=False):
         subprocess.check_call(["lektor", "plugins", "flush-cache"])
 
     # run the build
-    subprocess.check_call(["lektor", "build", "--output-path", OUTPUT_DIR])
+    lektor_args = ["lektor", "build", "--output-path", OUTPUT_DIR]
+    if verbose:
+        lektor_args.append("--verbose")
+    subprocess.check_call(lektor_args)
 
     # copy redirect file for netlify
     redirect_input = os.path.join(ROOT_DIR, "redirects.txt")
