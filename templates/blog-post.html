@@ -177,7 +177,9 @@
             .addClass("embed-responsive-item")
             .removeAttr('height')
             .removeAttr('width')
-            .wrap("<div class='embed-responsive embed-responsive-16by9'/>");
+            .wrap("<div class='col-lg-8 col-md-10 mx-auto d-block embed-responsive embed-responsive-16by9'/>");
+        $('.embed-responsive')
+            .wrap('<div class="row" />');
     </script>
 
     <!-- justified gallery -->
