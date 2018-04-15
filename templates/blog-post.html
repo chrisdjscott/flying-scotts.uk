@@ -30,9 +30,6 @@
     <!-- Custom map CSS -->
     <link href="{{ '/static/css/map.min.css'|asseturl }}" rel="stylesheet">
 
-    <!-- magnific popup -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha256-PZLhE6wwMbg4AB3d35ZdBF9HD/dI/y4RazA3iRDurss=" crossorigin="anonymous" />
-
     <!-- justified gallery -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css" integrity="sha256-ZKOGvp7YVwX26g2d0ooDvbSBQSEiIi4Bd9FuK+12Zk0=" crossorigin="anonymous" />
 
@@ -183,16 +180,6 @@
             .wrap("<div class='embed-responsive embed-responsive-16by9'/>");
     </script>
 
-    <!-- magnific popup for images -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha256-P93G0oq6PBPWTP1IR8Mz/0jHHUpaWL0aBJTKauisG7Q=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.image-link').magnificPopup({
-                type: 'image',
-            });
-        });
-    </script>
-
     <!-- justified gallery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" integrity="sha256-bIPvSCQ7+G5GbIXDt2B+9AMpCmFtxTVLU+aWAIPzL8I=" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -243,6 +230,7 @@
         </div>
     </div>
     <script type="text/javascript">
+        var $pswp = $('.pswp')[0];
         $('.post-photos').each( function(galleryIndex) {
             // build list of slides for photoswipe
             var $pic = $(this),
@@ -269,7 +257,6 @@
             var items = getItems();
 
             // open photoswipe when image clicked
-            var $pswp = $('.pswp')[0];
             $pic.on('click', 'a', function(event) {
                 event.preventDefault();
 
@@ -278,7 +265,7 @@
                     index: $(this).index(),
                     bgOpacity: 0.7,
                     showHideOpacity: true,
-                    galleryUID: galleryIndex,
+                    galleryUID: galleryIndex + 1,
                 }
 
                 // initialise and open photoswipe
