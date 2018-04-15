@@ -18,22 +18,21 @@ ROOT_DIR = os.path.dirname(__file__)
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'build')
 
 
-@invoke.task
-def build(ctx):
-    lektor_cli_ctx = Context()
-    lektor_cli_ctx.load_plugins()
+@invoke.task(help={'clean': 'Perform a clean first and then build'})
+def build(ctx, clean=False):
+    """
+    Build the website.
 
-    env = lektor_cli_ctx.get_env()
-    pad = env.new_pad()
+    """
+    if clean:
+        # clean first
+        subprocess.check_call(["lektor", "clean", "--output-path", OUTPUT_DIR, "--yes"])
 
-    # This is essentially `lektor build --output-path build`.
-    with CliReporter(env, verbosity=0):
-        builder = Builder(pad, OUTPUT_DIR)
-        failures = builder.build_all()
+        # also flush the plugins cache
+        subprocess.check_call(["lektor", "plugins", "flush-cache"])
 
-    if failures:
-        print("Error: Builder failed!")
-        raise invoke.Exit(1)
+    # run the build
+    subprocess.check_call(["lektor", "build", "--output-path", OUTPUT_DIR])
 
     # copy redirect file for netlify
     redirect_input = os.path.join(ROOT_DIR, "redirects.txt")
@@ -45,6 +44,10 @@ def build(ctx):
     'add_gpx': 'Add gpx file with the same name (false)', 'description': 'Post description (empty)',
     'date': 'Post date YYYY-MM-DD (empty)'})
 def newpost(ctx, title, slug=None, add_gpx=False, description=None, date=None):
+    """
+    Prepare to add a new post.
+
+    """
     def slugify(s):
         s = s.lower()
         for c in [' ', '-', '.', '/']:
@@ -132,6 +135,10 @@ body:
 
 @invoke.task
 def minify(ctx):
+    """
+    Minify my js and css files.
+
+    """
     minify_files = [
         'js/map.js',
         'css/map.css',
@@ -148,6 +155,10 @@ def minify(ctx):
 
 @invoke.task
 def photos(ctx, filename):
+    """
+    Process photos by reducing size and removing EXIF data.
+
+    """
     print("Preparing photos: %s" % filename)
 
     invoke.run('mogrify -resize "1920x1920>" -quality 70% -interlace Plane {0}'.format(filename), echo=True)
@@ -156,6 +167,10 @@ def photos(ctx, filename):
 
 @invoke.task
 def setgps(ctx, filename, lat, lon):
+    """
+    Set GPS location for the image file.
+
+    """
     from pexif import JpegFile
 
     try:
