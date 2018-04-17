@@ -6,6 +6,7 @@ import shutil
 import re
 import datetime
 import subprocess
+import glob
 
 import invoke
 
@@ -156,6 +157,32 @@ def minify(ctx):
             invoke.run("minify {0}".format(fpath_in), out_stream=fout, echo=True)
 
 
+def add_photo_meta(photofn, order):
+        metafn = photofn + '.lr'
+        if os.path.exists(metafn):
+            print("Meta file already exists: '%s'" % metafn)
+        else:
+            print("Adding meta file: '%s' (order %d)" % (metafn, order))
+            with open(metafn, "w") as fh:
+                fh.write("_model: image\n")
+                fh.write("---\n")
+                fh.write("description:\n")
+                fh.write("---\n")
+                fh.write("order: %d\n" % order)
+
+
+@invoke.task(help={"filename": "Name (or regexp) of file(s)",
+    "order": "Order parameter for this file (default=99)"})
+def photosmeta(ctx, filename, order=99):
+    """
+    Add meta file for image
+
+    """
+    fns = glob.glob(filename)
+    for fn in fns:
+        add_photo_meta(fn, order)
+
+
 @invoke.task
 def photos(ctx, filename):
     """
@@ -166,6 +193,9 @@ def photos(ctx, filename):
 
     invoke.run('mogrify -resize "1920x1920>" -quality 70% -interlace Plane {0}'.format(filename), echo=True)
     invoke.run('exiftool -overwrite_original_in_place -all= -tagsFromFile @ -GPSLatitudeRef -GPSLongitudeRef -GPSLatitude -GPSLongitude -GPSInfo {0}'.format(filename), echo=True)
+
+    for fn in glob.glob(filename):
+        add_photo_meta(fn, 99)
 
 
 @invoke.task

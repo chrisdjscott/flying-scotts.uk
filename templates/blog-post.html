@@ -91,9 +91,9 @@
                     <hr>
                     <h2>Gallery</h2>
                     <div id="gallery" class="justified-gallery post-photos">
-                        {% for image in this.attachments.images %}
+                        {% for image in this.attachments.images|sort(attribute='order') %}
                             <a class="gallery-image" href="{{ image|url }}" data-size="{{ image.width }}x{{ image.height}}" data-index="{{ loop.index0 }}" data-title="{{ image.description }}">
-                                <img src="{{ image.thumbnail(300, 300, quality=60)|url }}" alt="{{ image.description }}">
+                                <img src="{{ image.thumbnail(240, 240, quality=60)|url }}" alt="{{ image.description }}">
                             </a>
                         {% endfor %}
                     </div>
