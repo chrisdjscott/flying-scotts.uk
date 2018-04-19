@@ -1,3 +1,4 @@
 temp/
 .netlify
 /build
+.DS_Store

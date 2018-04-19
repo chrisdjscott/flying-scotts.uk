@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 
 from lektor.context import get_ctx
 from lektor.pluginsystem import Plugin
+from lektor.imagetools import get_image_info
 
 
 class MarkdownImgFancyPlugin(Plugin):
@@ -30,8 +31,6 @@ class MarkdownImgFancyPlugin(Plugin):
                 soup = BeautifulSoup(img_tag, "html.parser")
                 img_src = soup.img['src']
 
-                #TODO: add attributes to anchor
-
                 # display thumbnail for local images
                 if not src.startswith("https"):
                     root, ext = os.path.splitext(img_src)
@@ -45,15 +44,30 @@ class MarkdownImgFancyPlugin(Plugin):
                 # convert soup back to string
                 img_tag = str(soup)
 
-                # add anchor
-                img_tag = '<a href="{0}">'.format(img_src) + img_tag + "</a>"
-                soup = BeautifulSoup(img_tag, "html.parser")
-                if cfg.get('images.ekko-lightbox'):
-                    soup.a['data-toggle'] = 'lightbox'
-                    img_tag = str(soup)
-                elif cfg.get('images.magnific'):
-                    soup.a['class'] = 'image-link'
-                    img_tag = str(soup)
+                # add anchor (except for remote, i.e. Google Photos, images)
+                if not src.startswith("https"):
+                    img_tag = '<a href="{0}">'.format(img_src) + img_tag + "</a>"
+                    soup = BeautifulSoup(img_tag, "html.parser")
+                    if cfg.get('images.ekko-lightbox'):
+                        soup.a['data-toggle'] = 'lightbox'
+                        img_tag = str(soup)
+                    elif cfg.get('images.magnific'):
+                        soup.a['class'] = 'image-link'
+                        img_tag = str(soup)
+                    elif cfg.get('images.photoswipe'):
+                        # photoswipe requires the image dimensions
+                        ctx = get_ctx()
+                        img_fn = os.path.join(os.path.dirname(ctx.source.source_filename), src)
+                        if os.path.exists(img_fn):
+                            with open(img_fn, 'rb') as fh:
+                                _, width, height = get_image_info(fh)
+
+                            soup.a['data-size'] = "%sx%s" % (width, height)
+                            soup.a['data-title'] = "%s" % escape(title)
+                            soup.a['data-index'] = "0"
+                            img_tag = '<div class="post-photos">' + str(soup) + '</div>'
+#                        else:
+#                            print(">>> WARNING: markdown_img_fancy: file does not exist: '%s'" % img_fn)
 
                 return img_tag
 
