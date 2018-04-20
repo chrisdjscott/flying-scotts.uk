@@ -15,8 +15,8 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         $gallery.find('a').each(function() {
             var $href = $(this).attr('href'),
                 $size = $(this).data('size').split('x'),
-                $width = $size[0],
-                $height = $size[1],
+                $width = parseInt($size[0], 10),
+                $height = parseInt($size[1], 10),
                 $title = $(this).data('title');
 
             var item = {
@@ -33,7 +33,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         // open photoswipe when image clicked
         $gallery.on('click', 'a', function(evt) {
             evt.preventDefault();
-            openGallery(galleryIndex + 1, $(this).index());
+            openGallery(galleryIndex + 1, $(this).index() + 1);
         });
     });
 
@@ -47,7 +47,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
         // photoswipe options
         var options = {
-            index: pid,
+            index: pid - 1,  // expecting 0-based index for photo
             //bgOpacity: 0.7,
             //showHideOpacity: true,
             galleryUID: gid,
