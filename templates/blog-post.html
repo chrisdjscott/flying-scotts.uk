@@ -230,49 +230,8 @@
             </div>
         </div>
     </div>
+    <script src="{{ '/static/js/photos.js'|asseturl }}" type="text/javascript"></script>
     <script type="text/javascript">
-        var $pswp = $('.pswp')[0];
-        $('.post-photos').each( function(galleryIndex) {
-            // build list of slides for photoswipe
-            var $pic = $(this),
-                getItems = function () {
-                    var items = [];
-                    $pic.find('a').each(function() {
-                        var $href = $(this).attr('href'),
-                            $size = $(this).data('size').split('x'),
-                            $width = $size[0],
-                            $height = $size[1],
-                            $title = $(this).data('title');
-
-                        var item = {
-                            src: $href,
-                            w: $width,
-                            h: $height,
-                            title: $title
-                        };
-
-                        items.push(item);
-                    });
-                    return items;
-                }
-            var items = getItems();
-
-            // open photoswipe when image clicked
-            $pic.on('click', 'a', function(event) {
-                event.preventDefault();
-
-                // photoswipe options
-                var options = {
-                    index: $(this).index(),
-                    //bgOpacity: 0.7,
-                    //showHideOpacity: true,
-                    galleryUID: galleryIndex + 1,
-                }
-
-                // initialise and open photoswipe
-                var lightbox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
-                lightbox.init();
-            });
-        });
+        initPhotoSwipeFromDOM('.post-photos');
     </script>
 {% endblock bottom %}
