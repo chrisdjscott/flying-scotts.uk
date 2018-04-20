@@ -4,26 +4,22 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
     // store all items
     var galleries = [];
 
+    // iterate over each gallery in the page
     $(gallerySelector).each( function(galleryIndex) {
         var $gallery = $(this);
         galleries.push({
-            id: galleryIndex,
             items: [],
         });
 
         // build list of slides for this photo swipe gallery
         $gallery.find('a').each(function() {
-            var $href = $(this).attr('href'),
-                $size = $(this).data('size').split('x'),
-                $width = parseInt($size[0], 10),
-                $height = parseInt($size[1], 10),
-                $title = $(this).data('title');
-
+            var $size = $(this).data('size').split('x');
             var item = {
-                src: $href,
-                w: $width,
-                h: $height,
-                title: $title
+                src: $(this).attr('href'),
+                w: parseInt($size[0], 10),
+                h: parseInt($size[1], 10),
+                title: $(this).data('title'),
+                el: this,
             };
 
             galleries[galleryIndex].items.push(item);
@@ -48,9 +44,15 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
         // photoswipe options
         var options = {
             index: pid - 1,  // expecting 0-based index for photo
+            galleryUID: gid,
+            getThumbBoundsFn: function(index) {
+                var thumbnail = items[index].el.children[0],
+                    pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                    rect = thumbnail.getBoundingClientRect();
+                return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+            },
             //bgOpacity: 0.7,
             //showHideOpacity: true,
-            galleryUID: gid,
         };
 
         // initialise and open photoswipe
