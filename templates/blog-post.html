@@ -133,62 +133,62 @@
 {% block bottom %}
     {{ super() }}
 
-    <!-- add the map -->
     {% if this.gpx or (this.latitude and this.longitude) %}
+        <!-- custom map script -->
         <script src="{{ '/static/js/map.js'|asseturl }}" type="text/javascript"></script>
-        <script type="text/javascript">
-            // initialise the map
-            init_map(document.getElementById("post-route"));
-            add_fullscreen_control();
-            {% if this.gpx %}
-                // add the GPX route
-                add_gpx(document.getElementById("post-route"), "{{ this.title }}");
-            {% else %}
-                // add the start point and view that
-                add_marker("{{ this.title }}", "{{ this|url }}", "{{ this.date|dateformat('d MMMM y') }}", {{ this.latitude }}, {{ this.longitude }}, "{{ this.description }}");
-                set_view({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
-                set_title(document.getElementById("post-route"), "{{ this.title }}");
-            {% endif %}
-            
-            // add photos with gps info to the map
-            var photos = [];
-            {% for image in this.attachments.images %}
-                {% if image.exif.location %}
-                    photos.push({
-                        "lat": {{ image.exif.latitude }},
-                        "lng": {{ image.exif.longitude }},
-                        "thumbnail": "{{ image.thumbnail(64,64)|url }}",
-                        "url": "{{ image|url }}",
-                        "description": "{{ image.description }}",
-                    });
-                {% endif %}
-            {% endfor %}
-            add_photo_layer(photos);
-        </script>
     {% endif %}
 
-    <!-- fluid width for embedded videos (https://stackoverflow.com/a/33708979) -->
-    <script type="text/javascript">
-        $("iframe[src*='www.youtube.com']")
-            .addClass("embed-responsive-item")
-            .removeAttr('height')
-            .removeAttr('width')
-            .wrap("<div class='col-lg-8 col-md-10 mx-auto embed-responsive embed-responsive-16by9'/>");
-    </script>
-
-    <!-- justified gallery -->
+    <!-- justified gallery javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" integrity="sha256-bIPvSCQ7+G5GbIXDt2B+9AMpCmFtxTVLU+aWAIPzL8I=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $('#gallery').justifiedGallery({
-            rowHeight : 120,
-            lastRow : 'nojustify',
-            margins : 3
-        });
-    </script>
 
-    <!-- Photoswipe -->
+    <!-- javascript for this page -->
     <script type="text/javascript">
         $(document).ready(function() {
+            {% if this.gpx or (this.latitude and this.longitude) %}
+                // initialise the map
+                init_map(document.getElementById("post-route"));
+                add_fullscreen_control();
+                {% if this.gpx %}
+                    // add the GPX route
+                    add_gpx(document.getElementById("post-route"), "{{ this.title }}");
+                {% else %}
+                    // add the start point and view that
+                    add_marker("{{ this.title }}", "{{ this|url }}", "{{ this.date|dateformat('d MMMM y') }}", {{ this.latitude }}, {{ this.longitude }}, "{{ this.description }}");
+                    set_view({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
+                    set_title(document.getElementById("post-route"), "{{ this.title }}");
+                {% endif %}
+                
+                // add photos with gps info to the map
+                var photos = [];
+                {% for image in this.attachments.images %}
+                    {% if image.exif.location %}
+                        photos.push({
+                            "lat": {{ image.exif.latitude }},
+                            "lng": {{ image.exif.longitude }},
+                            "thumbnail": "{{ image.thumbnail(64,64)|url }}",
+                            "url": "{{ image|url }}",
+                            "description": "{{ image.description }}",
+                        });
+                    {% endif %}
+                {% endfor %}
+                add_photo_layer(photos);
+            {% endif %}
+
+            // fluid width for embedded videos (https://stackoverflow.com/a/33708979)
+            $("iframe[src*='www.youtube.com']")
+                .addClass("embed-responsive-item")
+                .removeAttr('height')
+                .removeAttr('width')
+                .wrap("<div class='col-lg-8 col-md-10 mx-auto embed-responsive embed-responsive-16by9'/>");
+
+            // justified gallery
+            $('#gallery').justifiedGallery({
+                rowHeight : 120,
+                lastRow : 'nojustify',
+                margins : 3
+            });
+
+            // PhotoSwipe
             initPhotoSwipeFromDOM('.post-photos');
         });
     </script>
