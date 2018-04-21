@@ -137,26 +137,6 @@ body:
         fh.write(templ)
 
 
-@invoke.task
-def minify(ctx):
-    """
-    Minify my js and css files.
-
-    """
-    minify_files = [
-        'js/map.js',
-        'css/map.css',
-    ]
-    cwd = os.path.abspath(os.path.dirname(__file__))
-    assets = os.path.join(cwd, 'assets', 'static')
-    for fn in minify_files:
-        fpath_in = os.path.join(assets, fn)
-        root, ext = os.path.splitext(fn)
-        fpath_out = os.path.join(assets, root + '.min' + ext)
-        with open(fpath_out, "w") as fout:
-            invoke.run("minify {0}".format(fpath_in), out_stream=fout, echo=True)
-
-
 def add_photo_meta(photofn, order):
         metafn = photofn + '.lr'
         if os.path.exists(metafn):
