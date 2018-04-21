@@ -47,7 +47,7 @@
 {% block content %}
     {{ super() }}
 
-    {% if this.gpx or (this.latitude and this.longitude) %}
+    {%- if this.gpx or (this.latitude and this.longitude) %}
         <!-- Map of the route -->
         <div class="container-fluid">
             <div class="row">
@@ -79,24 +79,24 @@
         </div>
     {% endif %}
 
-    <!-- Gallery of attached images -->
-    {% if this.attachments.images.count() > 3 %}
+    {%- if this.attachments.images.count() > 3 %}
+        <!-- Gallery of attached images -->
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <hr>
                     <h2>Gallery</h2>
                     <div id="gallery" class="justified-gallery post-photos">
-                        {% for image in this.attachments.images|sort(attribute='order') %}
+                        {%- for image in this.attachments.images|sort(attribute='order') %}
                             <a class="gallery-image" href="{{ image|url }}" data-size="{{ image.width }}x{{ image.height}}" data-index="{{ loop.index0 }}" data-title="{{ image.description }}">
                                 <img src="{{ image.thumbnail(240, 240, quality=60)|url }}" alt="{{ image.description }}">
                             </a>
-                        {% endfor %}
+                        {%- endfor %}
                     </div>
                 </div>
             </div>
         </div>
-    {% endif %}
+    {%- endif %}
 
     <!-- Disqus comments -->
     <div class="container-fluid">
@@ -114,17 +114,17 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <hr>
-                {% set siblings = this.get_siblings() %}
-                {% if siblings.next_page %}
+                {%- set siblings = this.get_siblings() %}
+                {%- if siblings.next_page %}
                     <a class="page-link float-left" href="{{ siblings.next_page|url }}" title="{{ siblings.next_page.title }}">Previous</a>
-                {% else %}
+                {%- else %}
                     <span class="page-item disabled"><span class="page-link float-left">Previous</span></span>
-                {% endif %}
-                {% if siblings.prev_page %}
+                {%- endif %}
+                {%- if siblings.prev_page %}
                     <a class="page-link float-right" href="{{ siblings.prev_page|url }}" title="{{ siblings.prev_page.title }}">Next</a>
-                {% else %}
+                {%- else %}
                     <span class="page-item disabled"><span class="page-link float-right">Next</span></span>
-                {% endif %}
+                {%- endif %}
             </div>
         </div>
     </div>
@@ -133,10 +133,10 @@
 {% block bottom %}
     {{ super() }}
 
-    {% if this.gpx or (this.latitude and this.longitude) %}
+    {%- if this.gpx or (this.latitude and this.longitude) %}
         <!-- custom map script -->
         <script src="{{ '/static/js/map.js'|asseturl }}" type="text/javascript"></script>
-    {% endif %}
+    {%- endif %}
 
     <!-- justified gallery javascript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" integrity="sha256-bIPvSCQ7+G5GbIXDt2B+9AMpCmFtxTVLU+aWAIPzL8I=" crossorigin="anonymous"></script>
@@ -144,24 +144,25 @@
     <!-- javascript for this page -->
     <script type="text/javascript">
         $(document).ready(function() {
-            {% if this.gpx or (this.latitude and this.longitude) %}
+            {%- if this.gpx or (this.latitude and this.longitude) %}
                 // initialise the map
                 init_map(document.getElementById("post-route"));
                 add_fullscreen_control();
-                {% if this.gpx %}
+
+                {%- if this.gpx %}
                     // add the GPX route
                     add_gpx(document.getElementById("post-route"), "{{ this.title }}");
-                {% else %}
+                {%- else %}
                     // add the start point and view that
                     add_marker("{{ this.title }}", "{{ this|url }}", "{{ this.date|dateformat('d MMMM y') }}", {{ this.latitude }}, {{ this.longitude }}, "{{ this.description }}");
                     set_view({{ this.latitude }}, {{ this.longitude }}, {{ this.zoom }});
                     set_title(document.getElementById("post-route"), "{{ this.title }}");
-                {% endif %}
+                {%- endif %}
                 
                 // add photos with gps info to the map
                 var photos = [];
-                {% for image in this.attachments.images %}
-                    {% if image.exif.location %}
+                {%- for image in this.attachments.images %}
+                    {%- if image.exif.location %}
                         photos.push({
                             "lat": {{ image.exif.latitude }},
                             "lng": {{ image.exif.longitude }},
@@ -169,10 +170,10 @@
                             "url": "{{ image|url }}",
                             "description": "{{ image.description }}",
                         });
-                    {% endif %}
-                {% endfor %}
+                    {%- endif %}
+                {%- endfor %}
                 add_photo_layer(photos);
-            {% endif %}
+            {%- endif %}
 
             // fluid width for embedded videos (https://stackoverflow.com/a/33708979)
             $("iframe[src*='www.youtube.com']")
