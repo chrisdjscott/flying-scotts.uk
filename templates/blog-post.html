@@ -160,18 +160,19 @@
                 {%- endif %}
                 
                 // add photos with gps info to the map
-                var photos = [];
-                {%- for image in this.attachments.images %}
-                    {%- if image.exif.location %}
-                        photos.push({
-                            "lat": {{ image.exif.latitude }},
-                            "lng": {{ image.exif.longitude }},
-                            "thumbnail": "{{ image.thumbnail(64,64)|url }}",
-                            "url": "{{ image|url }}",
-                            "description": "{{ image.description }}",
-                        });
-                    {%- endif %}
-                {%- endfor %}
+                var photos = [
+                    {%- for image in this.attachments.images %}
+                        {%- if image.exif.location %}
+                            {
+                                "lat": {{ image.exif.latitude }},
+                                "lng": {{ image.exif.longitude }},
+                                "thumbnail": "{{ image.thumbnail(64,64)|url }}",
+                                "url": "{{ image|url }}",
+                                "description": "{{ image.description }}",
+                            },
+                        {%- endif %}
+                    {%- endfor %}
+                ];
                 add_photo_layer(photos);
             {%- endif %}
 
