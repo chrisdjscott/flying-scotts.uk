@@ -166,7 +166,7 @@
                             {
                                 "lat": {{ image.exif.latitude }},
                                 "lng": {{ image.exif.longitude }},
-                                "thumbnail": "{{ image.thumbnail(64,64)|url }}",
+                                "thumbnail": "{{ image.thumbnail(64, 64, crop=True, quality=50)|url }}",
                                 "url": "{{ image|url }}",
                                 "description": "{{ image.description }}",
                             },
