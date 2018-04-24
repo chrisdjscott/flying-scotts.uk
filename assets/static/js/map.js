@@ -143,7 +143,7 @@ function add_photo_layer(photos) {
 
     photoLayer = L.photo.cluster().on('click', function(evt) {
         var photo = evt.layer.photo;
-        openGallery(galleries.length, photo.pid, evt.originalEvent.target);
+        openGallery(galleries.length, photo.pid, true);
     });
 
     control.addOverlay(photoLayer, "Photos");

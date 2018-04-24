@@ -73,26 +73,34 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 }
 
 // function that opens photoswipe
-var openGallery = function(gid, pid, thumb=null) {
+var openGallery = function(gid, pid, fromMap=false) {
     // photo swipe element
     var $pswp = $('.pswp')[0];
 
     // items for this gallery
     var items = galleries[gid - 1].items;
 
+    // transition
+    if (fromMap) {
+        // opacity transition option
+        var showHideOpacity = true;
+        var getThumbBoundsFn = false;
+    } else {
+        var showHideOpacity = false;
+        var getThumbBoundsFn = function(index) {
+            var thumbnail = items[index].el.children[0],
+                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                rect = thumbnail.getBoundingClientRect();
+            return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+        };
+    }
+
     // photoswipe options
     var options = {
         index: pid - 1,  // expecting 0-based index for photo
         galleryUID: gid,
-        getThumbBoundsFn: function(index) {
-            // using thumb means the zoom looks correct when opening from map
-            // however it will always close back to the original photo that was opened
-            var thumbnail = thumb || items[index].el.children[0],
-                pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                rect = thumbnail.getBoundingClientRect();
-            return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-        },
-        showHideOpacity: (thumb ? true : false),
+        getThumbBoundsFn: getThumbBoundsFn,
+        showHideOpacity: showHideOpacity,
     };
 
     // initialise and open photoswipe
