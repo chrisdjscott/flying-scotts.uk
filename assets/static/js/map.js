@@ -143,11 +143,7 @@ function add_photo_layer(photos) {
 
     photoLayer = L.photo.cluster().on('click', function(evt) {
         var photo = evt.layer.photo;
-        var template = '<a href="{url}"><img src="{url}" class="img-fluid-both" /></a><p>{description}</p>';
-        evt.layer.bindPopup(L.Util.template(template, photo), {
-            minWidth: 400,
-            className: 'leaflet-popup-photo',
-        }).openPopup();
+        openGallery(galleries.length, photo.pid, evt.originalEvent.target);
     });
 
     control.addOverlay(photoLayer, "Photos");
