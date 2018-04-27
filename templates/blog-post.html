@@ -55,7 +55,7 @@
                     <hr>
                     <section id="post-route" class="gpx" {% if this.gpx %}data-gpx-source="{{ this.gpx|url }}" {% endif %}data-map-target="post-map">
                         <header>
-                            <h3>Loading...</h3>
+                            {% if this.gpx %}<a href="{{ this.gpx|url }}" title="Download GPX">{% endif %}<h3>Loading...</h3>{% if this.gpx %}</a>{% endif %}
                             <span class="start"></span>
                         </header>
 
