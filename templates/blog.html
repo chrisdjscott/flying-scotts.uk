@@ -29,7 +29,7 @@
 {% endblock heading %}
 
 {% block content %}
-    {% if this.renderMap %}
+    {%- if this.renderMap %}
         <!-- Map of posts -->
         <div class="container-fluid">
             <div class="row">
@@ -48,13 +48,13 @@
                 </div>
             </div>
         </div>
-    {% endif %}
+    {%- endif %}
 
     <!-- List of posts -->
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                {% for post in this.pagination.items %}
+                {%- for post in this.pagination.items %}
                     <div class="post-preview">
                         <a href="{{ post|url }}">
                             <h2 class="post-title">
@@ -67,12 +67,12 @@
                         <p class="post-meta">{{ post.date|dateformat('d MMMM y') }} &mdash; {{ post.author }}</p>
                     </div>
                     <hr>
-                {% endfor %}
+                {%- endfor %}
 
                 <!-- pagination buttons -->
-                {% if this.pagination.pages > 1 %}
+                {%- if this.pagination.pages > 1 %}
                     {{ render_pagination_bootstrap(this.pagination) }}
-                {% endif %}
+                {%- endif %}
             </div>
         </div>
     </div>
@@ -82,18 +82,35 @@
 {% block bottom %}
     {{ super () }}
 
-    {% if this.renderMap %}
+    {%- if this.renderMap %}
         <!-- Create the map -->
         <script src="{{ '/static/js/map.js'|asseturl }}" type="text/javascript"></script>
         <script type="text/javascript">
             init_map(document.getElementById("post-route"));
             init_cluster();
-            {% set blog = site.get('/blog') %}
-            {% for post in this.children.filter(F._model == 'blog-post') %}
-                add_marker_to_cluster("{{ post.title }}", "{{ post|url }}", "{{ post.date|dateformat('d MMMM y') }}", {{ post.latitude }}, {{ post.longitude }}, "{{ post.description }}");
-            {% endfor %}
+            {%- set blog = site.get('/blog') %}
+            {%- for post in this.children.filter(F._model == 'blog-post') %}
+                {%- set post_image = post.attachments.get(post.image) %}
+                {%- if post_image %}
+                    {%- set thumb_size = 240 %}
+                    {%- set post_image_url = post_image.thumbnail(thumb_size, thumb_size, quality=60)|url %}
+                    {%- set ratio = post_image.width / post_image.height %}
+                    {%- if post_image.width > post_image.height %}
+                        {%- set width = thumb_size %}
+                        {%- set height = (width / ratio)|int %}
+                    {%- else %}
+                        {%- set height = thumb_size %}
+                        {%- set width = (ratio * height)|int %}
+                    {%- endif %}
+                {%- else %}
+                    {%- set post_image_url = "" %}
+                    {%- set width = 0 %}
+                    {%- set height = 0 %}
+                {%- endif %}
+                add_marker_to_cluster("{{ post.title }}", "{{ post|url }}", "{{ post.date|dateformat('d MMMM y') }}", {{ post.latitude }}, {{ post.longitude }}, "{{ post.description }}", "{{ post_image_url }}", {{ width }}, {{ height }});
+            {%- endfor %}
             set_view_nz();
             add_cluster_to_map();
         </script>
-    {% endif %}
+    {%- endif %}
 {% endblock bottom %}

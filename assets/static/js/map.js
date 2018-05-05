@@ -55,9 +55,15 @@ function init_cluster() {
 }
 
 
-function add_marker_to_cluster(pageTitle, pageUrl, pageDate, lat, lon, description) {
+function add_marker_to_cluster(pageTitle, pageUrl, pageDate, lat, lon, description, image, image_width, image_height) {
     var marker = L.marker([lat, lon]);
-    marker.bindPopup("<a href=" + pageUrl + ">" + pageTitle + "</a><br>" + description + "<br>" + pageDate);
+    var popup_html = "<a href=" + pageUrl + ">" + pageTitle;
+    if (image) {
+        popup_html += '<br><img src="' + image + '" width="' + image_width + '" height="' + image_height + '" title="' + pageTitle +'">';
+    }
+    popup_html += "</a><br>";
+    popup_html += description + "<br>" + pageDate;
+    marker.bindPopup(popup_html);
     markers.addLayer(marker);
 }
 
