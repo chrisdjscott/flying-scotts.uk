@@ -171,8 +171,9 @@ def photos(ctx, filename):
     """
     print("Preparing photos: %s" % filename)
 
+    exif_keep = "-GPSLatitudeRef -GPSLongitudeRef -GPSLatitude -GPSLongitude -GPSInfo -ImageLength -ImageHeight -ImageWidth"
     invoke.run('mogrify -resize "1920x1920>" -quality 70% -interlace Plane {0}'.format(filename), echo=True)
-    invoke.run('exiftool -overwrite_original_in_place -all= -tagsFromFile @ -GPSLatitudeRef -GPSLongitudeRef -GPSLatitude -GPSLongitude -GPSInfo {0}'.format(filename), echo=True)
+    invoke.run('exiftool -overwrite_original_in_place -all= -tagsFromFile @ {0} {1}'.format(exif_keep, filename), echo=True)
 
     for fn in glob.glob(filename):
         add_photo_meta(fn, 99)
