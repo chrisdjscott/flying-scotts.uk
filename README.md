@@ -13,6 +13,6 @@ Useful tools:
 
 ## License
 
-All original writing and images (i.e. everything under the "content" folder) are copyright their respective owners unless otherwise stated.
+All original writing and images (e.g. everything under the "content" folder) are copyright their respective owners unless otherwise stated.
 
 All other content is licensed under the MIT License.
