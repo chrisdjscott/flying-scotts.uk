@@ -31,12 +31,13 @@ class MarkdownPhotoswipePlugin(Plugin):
                 soup = BeautifulSoup(img_tag, "html.parser")
                 img_src = soup.img['src']
 
-                # display thumbnail for local images
-                # assumes thumbnail-generator was used to create an thumbnail with '-thumbnail' extension
-                # TODO: suffix should be an option
-                if not src.startswith("https"):
-                    root, ext = os.path.splitext(img_src)
-                    soup.img['src'] = root + '-thumbnail' + ext
+                # check if we should display a thumbnail instead of the full image
+                thumbnail_suffix = cfg.get("images.thumbnail_suffix")
+                if thumbnail_suffix:
+                    # only display thumbnail for local images
+                    if not src.startswith("https"):
+                        root, ext = os.path.splitext(img_src)
+                        soup.img['src'] = root + '-' + thumbnail_suffix + ext
 
                 # add classes to the img
                 img_class = cfg.get('images.class')
@@ -61,8 +62,11 @@ class MarkdownPhotoswipePlugin(Plugin):
                         soup.a['data-size'] = "%sx%s" % (width, height)
                         soup.a['data-title'] = "%s" % escape(title)
                         soup.a['data-index'] = "0"
-                        # TODO: 'post-photos' should be an option
-                        img_tag = '<div class="post-photos">' + str(soup) + '</div>'
+                        div_class = cfg.get("images.div_class")
+                        if div_class:
+                            img_tag = '<div class="' + div_class + '">' + str(soup) + '</div>'
+                        else:
+                            img_tag = '<div>' + str(soup) + '</div>'
 
                 return img_tag
 
