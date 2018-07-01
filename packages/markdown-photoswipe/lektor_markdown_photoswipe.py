@@ -10,12 +10,12 @@ from lektor.pluginsystem import Plugin
 from lektor.imagetools import get_image_info
 
 
-class MarkdownImgFancyPlugin(Plugin):
-    name = u'markdown-img-fancy'
+class MarkdownPhotoswipePlugin(Plugin):
+    name = u'markdown-photoswipe'
     description = u'Add your description here.'
 
     def on_markdown_config(self, config, **extra):
-        class ImageFancyMixin(object):
+        class ImagePhotoswipeMixin(object):
             def image(renderer, src, title, text):
                 # get config
                 cfg = self.get_config()
@@ -25,13 +25,15 @@ class MarkdownImgFancyPlugin(Plugin):
                     title = text
 
                 # get the default img tag
-                img_tag = super(ImageFancyMixin, renderer).image(src, title, text)
+                img_tag = super(ImagePhotoswipeMixin, renderer).image(src, title, text)
 
                 # parse tag
                 soup = BeautifulSoup(img_tag, "html.parser")
                 img_src = soup.img['src']
 
                 # display thumbnail for local images
+                # assumes thumbnail-generator was used to create an thumbnail with '-thumbnail' extension
+                # TODO: suffix should be an option
                 if not src.startswith("https"):
                     root, ext = os.path.splitext(img_src)
                     soup.img['src'] = root + '-thumbnail' + ext
@@ -48,27 +50,20 @@ class MarkdownImgFancyPlugin(Plugin):
                 if not src.startswith("https"):
                     img_tag = '<a href="{0}">'.format(img_src) + img_tag + "</a>"
                     soup = BeautifulSoup(img_tag, "html.parser")
-                    if cfg.get('images.ekko-lightbox'):
-                        soup.a['data-toggle'] = 'lightbox'
-                        img_tag = str(soup)
-                    elif cfg.get('images.magnific'):
-                        soup.a['class'] = 'image-link'
-                        img_tag = str(soup)
-                    elif cfg.get('images.photoswipe'):
-                        # photoswipe requires the image dimensions
-                        ctx = get_ctx()
-                        img_fn = os.path.join(os.path.dirname(ctx.source.source_filename), src)
-                        if os.path.exists(img_fn):
-                            with open(img_fn, 'rb') as fh:
-                                _, width, height = get_image_info(fh)
 
-                            soup.a['data-size'] = "%sx%s" % (width, height)
-                            soup.a['data-title'] = "%s" % escape(title)
-                            soup.a['data-index'] = "0"
-                            img_tag = '<div class="post-photos">' + str(soup) + '</div>'
-#                        else:
-#                            print(">>> WARNING: markdown_img_fancy: file does not exist: '%s'" % img_fn)
+                    # photoswipe requires the image dimensions
+                    ctx = get_ctx()
+                    img_fn = os.path.join(os.path.dirname(ctx.source.source_filename), src)
+                    if os.path.exists(img_fn):
+                        with open(img_fn, 'rb') as fh:
+                            _, width, height = get_image_info(fh)
+
+                        soup.a['data-size'] = "%sx%s" % (width, height)
+                        soup.a['data-title'] = "%s" % escape(title)
+                        soup.a['data-index'] = "0"
+                        # TODO: 'post-photos' should be an option
+                        img_tag = '<div class="post-photos">' + str(soup) + '</div>'
 
                 return img_tag
 
-        config.renderer_mixins.append(ImageFancyMixin)
+        config.renderer_mixins.append(ImagePhotoswipeMixin)

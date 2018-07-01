@@ -1,15 +1,15 @@
 from setuptools import setup
 
 setup(
-    name='lektor-markdown-img-fancy',
+    name='lektor-markdown-photoswipe',
     version='0.1',
     author=u'Chris Scott',
     author_email='chris@chrisdjscott.co.uk',
     license='MIT',
-    py_modules=['lektor_markdown_img_fancy'],
+    py_modules=['lektor_markdown_photoswipe'],
     entry_points={
         'lektor.plugins': [
-            'markdown-img-fancy = lektor_markdown_img_fancy:MarkdownImgFancyPlugin',
+            'markdown-photoswipe = lektor_markdown_photoswipe:MarkdownPhotoswipePlugin',
         ]
     },
     install_requires=['beautifulsoup4'],
