@@ -1,6 +1,6 @@
 [project]
 name = The Flying Scotts
-url = https://flying-scotts.uk
+url = https://www.flying-scotts.uk
 
 [packages]
 lektor-disqus-comments = 0.4
