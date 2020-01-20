@@ -6,6 +6,7 @@ image = "/img/about-bg.jpg" #optional image - "/img/about-bg.jpg" is the default
 description = ""
 latitude = ""
 longitude = ""
+zoom = ""
 gpx = ""
 draft = true
 comments = true

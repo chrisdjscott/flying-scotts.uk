@@ -2,6 +2,7 @@
 title: Kura - Omanawanui Loop
 date: 2016-12-24
 publishdate: 2016-12-24
+image: background.jpg
 author: Chris Scott
 latitude: -37.039238
 longitude: 174.507223
