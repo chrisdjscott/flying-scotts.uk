@@ -1,0 +1,8 @@
+README.md
+lektor_markdown_photoswipe.py
+lektor_markdown_photoswipe.egg-info/PKG-INFO
+lektor_markdown_photoswipe.egg-info/SOURCES.txt
+lektor_markdown_photoswipe.egg-info/dependency_links.txt
+lektor_markdown_photoswipe.egg-info/entry_points.txt
+lektor_markdown_photoswipe.egg-info/requires.txt
+lektor_markdown_photoswipe.egg-info/top_level.txt

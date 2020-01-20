@@ -1,9 +1,0 @@
-[project]
-name = The Flying Scotts
-url = https://www.flying-scotts.uk
-
-[packages]
-lektor-disqus-comments = 0.4
-lektor-google-analytics = 0.1.3
-lektor-atom = 0.3
-lektor-thumbnail-generator = 0.3.3

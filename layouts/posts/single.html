@@ -1,0 +1,75 @@
+{{ partial "header.html" .}}
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    {{ if isset .Params "image" }}<header class="masthead" style="background-image: url('{{ .Params.image }}')">
+      {{ else }}<header class="masthead" style="background-image: url('/img/post-bg.jpg')">
+    {{ end }}
+      <div class="container-fluid">
+        <div class="row">
+           <div class="col-lg-8 col-md-10 mx-auto">
+             <div class="post-heading">
+               <h1>{{ .Title }}</h1>
+               <h2 class="subheading">{{ .Description }}</h2>
+               <span class="meta">
+                 {{ partial "meta.html" .}}
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              {{ .Content }}
+            </div>
+        </div>
+    </div>
+
+    {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
+        <!-- Map of the route -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <hr>
+                    <section id="post-route" class="gpx" {{ if (isset .Params "gpx") }}data-gpx-source="{{ .Params.gpx }}" {{ end }}data-map-target="post-map">
+                        <header>
+                            {{ if (isset .Params "gpx") }}<a href="{{ .Params.gpx }}" title="Download GPX file">{{ end }}<h3>Loading...</h3>{{ if (isset .Params "gpx") }}</a>{{ end }}
+                            <span class="start"></span>
+                        </header>
+
+                        <article>
+                            <div class="map" id="post-map"></div>
+                        </article>
+
+                        {{ if (isset .Params "gpx") }}
+                            <footer>
+                                <ul class="info">
+                                    <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
+                                    &mdash; <li>Duration:&nbsp;<span class="duration"></span></li>
+                                    &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
+                                    &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
+                                </ul>
+                            </footer>
+                        {{ end }}
+                    </section>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+
+    <!-- Comments -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              {{ partial "comments.html" . }}
+            </div>
+        </div>
+    </div>
+
+
+
+{{ partial "footer.html" .}}
