@@ -1,3 +1,0 @@
-[lektor.plugins]
-markdown-photoswipe = lektor_markdown_photoswipe:MarkdownPhotoswipePlugin
-
