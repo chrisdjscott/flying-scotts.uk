@@ -106,7 +106,7 @@
                     add_gpx(document.getElementById("post-route"), "{{ .Params.title }}");
                 {{ else }}
                     // add the start point and view that
-                    add_marker("{{ .Params.Title }}", "{{ .Permalink }}", "{{ .Params.Date }}", {{ .Params.latitude }}, {{ .Params.longitude }}, "{{ .Params.description }}");
+                    add_marker("{{ .Params.Title }}", "{{ .RelPermalink }}", "{{ .Params.Date }}", {{ .Params.latitude }}, {{ .Params.longitude }}, "{{ .Params.description }}");
                     set_view({{ .Params.latitude }}, {{ .Params.longitude }}, {{ .Params.zoom }});
                     set_title(document.getElementById("post-route"), "{{ .Params.Title }}");
                 {{ end }}
