@@ -1,0 +1,10 @@
+{{ $original := $.Page.Resources.GetMatch (printf "%s" (.Get "src")) }}
+{{ if not $original }}
+    errorf "could not find image in page resources: %s" (.Get "src") }}
+{{ end }}
+{{ $thumb := $original.Fit "500x500 q60" }}
+<div class="post-photos">
+    <a data-index="0" data-size="{{ $original.Width }}x{{ $original.Height }}"{{ with .Get "title" }} data-title="{{ . }}"{{ end }} href="{{ $original.RelPermalink }}">
+        <img src="{{ $thumb.RelPermalink }}" class="img-fluid-both rounded mx-auto d-block"{{ with .Get "title" }} title="{{ . }}" alt="{{ . }}"{{ end }} />
+    </a>
+</div>

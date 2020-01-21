@@ -62,6 +62,26 @@
         </div>
     {{ end }}
 
+    {{ with .Resources.ByType "image" }}
+        <!-- Gallery of attached images -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <hr>
+                    <h2>Gallery</h2>
+                    <div id="gallery" class="justified-gallery post-photos">
+                        {{ range $index, $image := . }}
+                            {{ $thumb := $image.Fit "240x240 q60" }}
+                            <a class="gallery-image" href="{{ $image.RelPermalink }}" data-size="{{ $image.Width }}x{{ $image.Height}}" data-index="{{ $index }}" data-title="{{ $image.Title }}">
+                                <img src="{{ $thumb.RelPermalink }}" alt="{{ $image.Title }}">
+                            </a>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+
     <!-- Comments -->
     <div class="container-fluid">
         <div class="row">
@@ -98,8 +118,18 @@
                 .removeAttr("height")
                 .removeAttr("width")
                 .wrap("<div class='col-lg-8 col-md-10 mx-auto embed-responsive embed-responsive-16by9'/>");
-            // responsive images accounting for width and height
-            $("img").addClass("img-fluid-both rounded mx-auto d-block");
+
+            // justified gallery
+            $('#gallery').justifiedGallery({
+                rowHeight : 120,
+                lastRow : 'nojustify',
+                margins : 3
+            });
+
+            // PhotoSwipe
+            initPhotoSwipeFromDOM('.post-photos');
+
+			// add photos with gps info to the map...
         });
     </script>
 {{ end }}
