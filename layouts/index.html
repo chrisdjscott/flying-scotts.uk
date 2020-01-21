@@ -57,9 +57,9 @@
             {{ $original := $page.Resources.GetMatch (printf "%s" $page.Params.image) }}
             {{ if ($original) }}
                 {{ $thumb := $original.Fit "240x240 q60" }}
-                add_marker_to_cluster("{{ $page.Title }}", "{{ $page.Permalink }}", '{{ $page.Date.Format "Monday, January 2, 2006" }}', {{ $page.Params.latitude }}, {{ $page.Params.longitude }}, "{{ $page.Params.description }}", "{{ $thumb.RelPermalink }}", {{ $thumb.Width }}, {{ $thumb.Height }});
+                add_marker_to_cluster("{{ $page.Title }}", "{{ $page.RelPermalink }}", '{{ $page.Date.Format "Monday, January 2, 2006" }}', {{ $page.Params.latitude }}, {{ $page.Params.longitude }}, "{{ $page.Params.description }}", "{{ $thumb.RelPermalink }}", {{ $thumb.Width }}, {{ $thumb.Height }});
             {{ else }}
-                add_marker_to_cluster("{{ $page.Title }}", "{{ $page.Permalink }}", '{{ $page.Date.Format "Monday, January 2, 2006" }}', {{ $page.Params.latitude }}, {{ $page.Params.longitude }}, "{{ $page.Params.description }}", "", 0, 0);
+                add_marker_to_cluster("{{ $page.Title }}", "{{ $page.RelPermalink }}", '{{ $page.Date.Format "Monday, January 2, 2006" }}', {{ $page.Params.latitude }}, {{ $page.Params.longitude }}, "{{ $page.Params.description }}", "", 0, 0);
             {{ end }}
         {{ end }}
 		set_view_nz();
