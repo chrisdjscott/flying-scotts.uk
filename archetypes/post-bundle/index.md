@@ -2,7 +2,7 @@
 title = "{{ replace .Name "-" " " | title }}"
 date = {{ .Date }}
 publishdate = {{ .PublishDate }}
-image = "/img/about-bg.jpg" #optional image - "/img/about-bg.jpg" is the default
+image = "/img/post-bg.jpg"
 description = ""
 latitude = ""
 longitude = ""
