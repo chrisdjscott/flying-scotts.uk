@@ -1,5 +1,9 @@
 {{ define "title" }}{{ .Site.Title }}{{ end }}
 
+{{ define "extrahead" }}
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+{{ end }}
+
 {{ define "header" }}
     <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
       <div class="container-fluid">
@@ -65,4 +69,16 @@
 		set_view_nz();
 		add_cluster_to_map();
 	</script>
+
+	<script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 {{ end }}
