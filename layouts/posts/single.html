@@ -1,0 +1,155 @@
+{{ define "header" }}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    {{ if isset .Params "image" }}<header class="masthead" style="background-image: url('{{ .Params.image }}')">
+      {{ else }}<header class="masthead" style="background-image: url('/img/post-bg.jpg')">
+    {{ end }}
+      <div class="container-fluid">
+        <div class="row">
+           <div class="col-lg-8 col-md-10 mx-auto">
+             <div class="post-heading">
+               <h1>{{ .Title }}</h1>
+               <h2 class="subheading">{{ .Description }}</h2>
+               <span class="meta">
+                 {{ partial "meta.html" .}}
+               </span>
+             </div>
+           </div>
+        </div>
+      </div>
+    </header>
+{{ end }}
+
+{{ define "main" }}
+    <!-- Post Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              {{ .Content }}
+            </div>
+        </div>
+    </div>
+
+    {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
+        <!-- Map of the route -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <hr>
+                    <section id="post-route" class="gpx" {{ if (isset .Params "gpx") }}data-gpx-source="{{ .Params.gpx }}" {{ end }}data-map-target="post-map">
+                        <header>
+                            {{ if (isset .Params "gpx") }}<a href="{{ .Params.gpx }}" title="Download GPX file">{{ end }}<h3>Loading...</h3>{{ if (isset .Params "gpx") }}</a>{{ end }}
+                            <span class="start"></span>
+                        </header>
+
+                        <article>
+                            <div class="map" id="post-map"></div>
+                        </article>
+
+                        {{ if (isset .Params "gpx") }}
+                            <footer>
+                                <ul class="info">
+                                    <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
+                                    &mdash; <li>Duration:&nbsp;<span class="duration"></span></li>
+                                    &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
+                                    &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
+                                </ul>
+                            </footer>
+                        {{ end }}
+                    </section>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+
+    {{ with .Resources.ByType "image" }}
+        <!-- Gallery of attached images -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <hr>
+                    <h2>Gallery</h2>
+                    <div id="gallery" class="justified-gallery post-photos">
+                        {{ range $index, $image := . }}
+                            {{ $thumb := $image.Fit "240x240 q60" }}
+                            <a class="gallery-image" href="{{ $image.RelPermalink }}" data-size="{{ $image.Width }}x{{ $image.Height}}" data-index="{{ $index }}" data-title="{{ $image.Title }}">
+                                <img src="{{ $thumb.RelPermalink }}" alt="{{ $image.Title }}">
+                            </a>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{ end }}
+
+    <!-- Comments -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              {{ partial "comments.html" . }}
+            </div>
+        </div>
+    </div>
+{{ end }}
+
+{{ define "bottom" }}
+    <!-- javascript for this page -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
+                // initialise the map
+                init_map(document.getElementById("post-route"));
+                add_fullscreen_control();
+
+                {{ if (isset .Params "gpx") }}
+                    // add the GPX route
+                    add_gpx(document.getElementById("post-route"), "{{ .Params.title }}");
+                {{ else }}
+                    // add the start point and view that
+                    add_marker("{{ .Params.Title }}", "{{ .Permalink }}", "{{ .Params.Date }}", {{ .Params.latitude }}, {{ .Params.longitude }}, "{{ .Params.description }}");
+                    set_view({{ .Params.latitude }}, {{ .Params.longitude }}, {{ .Params.zoom }});
+                    set_title(document.getElementById("post-route"), "{{ .Params.Title }}");
+                {{ end }}
+            {{ end }}
+
+            // fluid width for embedded videos
+            $("iframe[src*='www.youtube.com']")
+                .addClass("embed-responsive-item")
+                .removeAttr("height")
+                .removeAttr("width")
+                .wrap("<div class='col-lg-8 col-md-10 mx-auto embed-responsive embed-responsive-16by9'/>");
+
+            // justified gallery
+            $('#gallery').justifiedGallery({
+                rowHeight : 120,
+                lastRow : 'nojustify',
+                margins : 3
+            });
+
+            // PhotoSwipe
+            initPhotoSwipeFromDOM('.post-photos');
+
+            {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
+                // add photos with gps info to the map
+                var photos = [
+                    {{- with .Resources.ByType "image" }}
+                        {{- range $index, $image := . }}
+                            {{- with $image.Exif }}
+                                {{- $thumb := $image.Fill "64x64 q50 smart" }}
+                                {
+                                    "lat": {{ .Lat }},
+                                    "lng": {{ .Long }},
+                                    "thumbnail": "{{ $thumb.RelPermalink }}",
+                                    "url": "{{ $image.RelPermalink }}",
+                                    "description": "{{ $image.Title }}",
+                                    "pid": {{ $index }},
+                                },
+                            {{- end }}
+                        {{- end }}
+                    {{- end }}
+                ];
+                add_photo_layer(photos);
+            {{ end }}
+        });
+    </script>
+{{ end }}

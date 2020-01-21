@@ -1,0 +1,30 @@
+{{ define "header" }}
+    <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+     <div class="container-fluid">
+       <div class="row">
+         <div class="col-lg-8 col-md-10 mx-auto">
+           <div class="site-heading">
+             <h1>{{ .Title }}</h1>
+             {{ with .Description }}
+               <hr class="small">
+               <span class="subheading">{{ . }}</span>
+             {{ end }}
+           </div>
+         </div>
+       </div>
+     </div>
+    </header>
+{{ end }}
+
+{{ define "main" }}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          {{ range .Paginator.Pages }}
+              {{ .Render "summary" }}
+          {{ end }}
+          {{ template "_internal/pagination.html" . }}
+        </div>
+      </div>
+    </div>
+{{ end }}

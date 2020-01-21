@@ -1,0 +1,42 @@
+{{ define "header" }}
+    <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="page-heading">
+                      <h1>{{ .Title }}</h1>
+                        <hr class="small">
+                        <span class="subheading">{{ .Description }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{{ end }}
+
+{{ define "main" }}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              {{ .Content }}
+            </div>
+        </div>
+    </div>
+{{ end }}
+
+{{ define "bottom" }}
+    <!-- javascript for this page -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            // fluid width for embedded videos
+            $("iframe[src*='www.youtube.com']")
+                .addClass("embed-responsive-item")
+                .removeAttr("height")
+                .removeAttr("width")
+                .wrap("<div class='col-lg-8 col-md-10 mx-auto embed-responsive embed-responsive-16by9'/>");
+
+            // PhotoSwipe
+            initPhotoSwipeFromDOM('.post-photos');
+        });
+    </script>
+{{ end }}

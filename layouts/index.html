@@ -1,0 +1,68 @@
+{{ define "title" }}{{ .Site.Title }}{{ end }}
+
+{{ define "header" }}
+    <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+                <h1>{{ .Site.Title }}</h1>
+                {{ with .Site.Params.Description }}<span class="subheading">{{ . }}</span>{{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+{{ end }}
+
+{{ define "main" }}
+    <!-- Map of posts -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <section id="post-route" class="gpx" data-map-target="post-map">
+                    <header>
+                        <h3>Map of posts</h3>
+                        <span class="start">View as a list below</span>
+                    </header>
+
+                    <article>
+                        <div class="map" id="post-map"></div>
+                    </article>
+                </section>
+                <hr>
+            </div>
+        </div>
+    </div>
+      	
+    <!-- List of posts -->
+    <div class="container-fluid">
+		<div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                {{ range ( .Paginate ( where site.RegularPages "Section" "posts" ) ).Pages  }}
+                    {{ .Render "summary"}}
+                {{ end }}
+                {{ template "_internal/pagination.html" . }}
+            </div>
+        </div>
+    </div>
+{{ end }}
+
+{{ define "bottom" }}
+    <!-- Create the map -->
+	<script type="text/javascript">
+		init_map(document.getElementById("post-route"));
+		init_cluster();
+        {{ range $page := ( where .Site.RegularPages "Section" "posts" ) }}
+            {{ $original := $page.Resources.GetMatch (printf "%s" $page.Params.image) }}
+            {{ if ($original) }}
+                {{ $thumb := $original.Fit "240x240 q60" }}
+                add_marker_to_cluster("{{ $page.Title }}", "{{ $page.Permalink }}", '{{ $page.Date.Format "Monday, January 2, 2006" }}', {{ $page.Params.latitude }}, {{ $page.Params.longitude }}, "{{ $page.Params.description }}", "{{ $thumb.RelPermalink }}", {{ $thumb.Width }}, {{ $thumb.Height }});
+            {{ else }}
+                add_marker_to_cluster("{{ $page.Title }}", "{{ $page.Permalink }}", '{{ $page.Date.Format "Monday, January 2, 2006" }}', {{ $page.Params.latitude }}, {{ $page.Params.longitude }}, "{{ $page.Params.description }}", "", 0, 0);
+            {{ end }}
+        {{ end }}
+		set_view_nz();
+		add_cluster_to_map();
+	</script>
+{{ end }}

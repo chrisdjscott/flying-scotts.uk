@@ -1,7 +1,7 @@
 # flying-scotts.uk
 
 The source for our website, based on the [clean blog](https://github.com/BlackrockDigital/startbootstrap-clean-blog)
-theme, using [lektor](https://github.com/lektor/lektor) for content management and
+theme, using [Hugo](https://gohugo.io/) for content management and
 [leaflet](http://leafletjs.com/), [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx),
 [Leaflet.Elevation](https://github.com/MrMufflon/Leaflet.Elevation) and
 [Leaflet.Photo](https://github.com/turban/Leaflet.Photo) for the maps.

@@ -2,3 +2,5 @@ temp/
 .netlify
 /build
 .DS_Store
+/public/
+/resources/_gen/
