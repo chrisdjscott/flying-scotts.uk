@@ -18,15 +18,22 @@ print("lektor:", lrfiles)
 
 # get new file names
 newimfiles = {}
+imtitles = {}
 for lr, im in zip(lrfiles, imfiles):
     with open(lr) as fh:
         order = None
+        description = None
         for line in fh:
-            if line.startswith("order:"):
+            if order is None and line.startswith("order:"):
                 order = int(line.split()[1])
-                break
+            elif description is None and line.startswith("description:"):
+                array = line.strip().split(":")
+                assert len(array) == 1 or len(array) == 2
+                description = array[1].lstrip() if len(array) == 2 else im
     assert order is not None, "No order in lr file %s" % lr
+    assert description is not None, "No description in lr file %s" % lr
     newimfiles[im] = "%03d_%s" % (order, im)
+    imtitles[im] = description if len(description) else im
 
 # get name of image file
 with open("index.md") as fh:
@@ -37,7 +44,6 @@ with open("index.md") as fh:
     frontmatter = []
     body = []
     have_frontmatter = False
-    resources_in_frontmatter = False
     for i, line in enumerate(index_lines):
         if not have_frontmatter:
             if line.startswith("---"):
@@ -60,13 +66,7 @@ with open("index.md") as fh:
                 im = imbit[1:-1]
                 print(line, desc, im)
 
-                if not resources_in_frontmatter:
-                    resources_in_frontmatter = True
-                    frontmatter.append("resources:")
-                frontmatter.append("  - src: {}".format(im))
-                frontmatter.append("    title: {}".format(desc))
-
-                line = '\{\{< photo src="{}" title="{}" >\}\}'.format(newimfiles[im], desc)
+                line = '{{{{< photo src="{}" title="{}" >}}}}'.format(newimfiles[im], desc)
 
             body.append(line.rstrip())
 
@@ -74,6 +74,12 @@ assert background is not None, "Could not find image in index.md"
 print("Background:", background)
 assert background in imfiles, "Background is not in image files list"
 assert have_frontmatter
+
+# now parse image lr files and add resources
+frontmatter.append("resources:")
+for im, title in imtitles.items():
+    frontmatter.append("  - src: {}".format(newimfiles[im]))
+    frontmatter.append("    title: {}".format(title))
 
 print("Starting to change things now")
 
