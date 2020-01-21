@@ -3,7 +3,7 @@ title: Rangitoto Run
 date: 2016-06-06
 publishdate: 2016-06-06
 author: Chris Scott
-image: rangitoto-run.jpg
+image: 002_rangitoto-run.jpg
 latitude: -36.808316
 longitude: 174.861928
 gpx: rangitoto-run.gpx
@@ -11,6 +11,11 @@ tags:
   - trail run
 categories:
   - Activities
+resources:
+  - src: 001_rangitoto.jpg
+    title: At the top of Rangitoto
+  - src: 002_rangitoto-run.jpg
+    title: View from Rangitoto
 ---
 
 We took advantage of a public holiday (the Queen’s birthday) to head over to Rangitoto Island, a
@@ -19,7 +24,7 @@ We took advantage of a public holiday (the Queen’s birthday) to head over to R
 summit, did a loop around to some lava caves and back up to the summit again. The views from the
 top were amazing, with great views of Auckland and the surrounding area. Not bad for winter.
 
-![Rangitoto Summit](rangitoto.jpg)
+{{< photo src="001_rangitoto.jpg" title="Rangitoto Summit" >}}
 
 We then ran down to the eastern side of the island, close to Motutapu Island. At this point we had
 to decide whether to retrace our steps and follow the road back to the ferry or to carry on as
