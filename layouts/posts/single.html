@@ -129,7 +129,27 @@
             // PhotoSwipe
             initPhotoSwipeFromDOM('.post-photos');
 
-			// add photos with gps info to the map...
+            {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
+                // add photos with gps info to the map
+                var photos = [
+                    {{- with .Resources.ByType "image" }}
+                        {{- range $index, $image := . }}
+                            {{- with $image.Exif }}
+                                {{- $thumb := $image.Fill "64x64 q50 smart" }}
+                                {
+                                    "lat": {{ .Lat }},
+                                    "lng": {{ .Long }},
+                                    "thumbnail": "{{ $thumb.RelPermalink }}",
+                                    "url": "{{ $image.RelPermalink }}",
+                                    "description": "{{ $image.Title }}",
+                                    "pid": {{ $index }},
+                                },
+                            {{- end }}
+                        {{- end }}
+                    {{- end }}
+                ];
+                add_photo_layer(photos);
+            {{ end }}
         });
     </script>
 {{ end }}
