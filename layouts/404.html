@@ -1,28 +1,10 @@
-{{ partial "header.html" .}}
-
-    <!-- Page Header -->
-    <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
-     <div class="container-fluid">
-       <div class="row">
-         <div class="col-lg-8 col-md-10 mx-auto">
-           <div class="site-heading">
-             <h1>{{ .Site.Title }}</h1>
-             {{ with .Site.Params.Description }}<span class="subheading">{{ . }}</span>{{ end }}
-           </div>
-         </div>
-       </div>
-     </div>
-    </header>
-
+{{ define "main" }}
     <!-- Main Content -->
     <div class="container-fluid">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <div class="post-preview">
-          <p class="post-meta"><a href="{{ .Site.BaseURL }}">Index</a>
-            <br />
-          </p>
+        <div class="row">
+            <p>There is no page here - <a href="/">back to the index</a></p>
         </div>
       </div>
     </div>
-
-{{ partial "footer.html" .}}
+{{ end }}
