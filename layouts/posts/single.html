@@ -114,6 +114,17 @@
                 {{ end }}
             {{ end }}
 
+            {{ if .HasShortcode "map" }}
+                // map shortcode javascript
+                console.log('hasshortcodemap {{ .Scratch.Get "mapcount" }}');
+                targets = {{ .Scratch.Get "maptargets" }}
+                {{ range $mapid, $target := (.Scratch.Get "maptargets") }}
+                    var map_{{ $mapid }} = create_map();
+
+                    
+                {{ end }}
+            {{ end }}
+
             // fluid width for embedded videos
             $("iframe[src*='www.youtube.com']")
                 .addClass("embed-responsive-item")

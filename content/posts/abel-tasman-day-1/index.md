@@ -58,3 +58,9 @@ There was still lots of really nice scenery and even a big swing bridge, which I
 This was the first hut we had stayed in and it seemed like a good one.
 
 {{< youtube fQyleGOVdkM >}}
+
+Testing map below
+
+{{< map gpx="abel-tasman-day-1.gpx" title="Test map" >}}
+
+After test map
