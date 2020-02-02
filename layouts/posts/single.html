@@ -1,3 +1,10 @@
+{{ define "extrahead" }}
+    {{- if .HasShortcode "map" }}
+        <!-- Custom CSS for map -->
+        <link href="/css/map.css" rel="stylesheet">
+    {{- end }}
+{{ end }}
+
 {{ define "header" }}
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
@@ -29,38 +36,6 @@
             </div>
         </div>
     </div>
-
-    {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
-        <!-- Map of the route -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
-                    <hr>
-                    <section id="post-route" class="gpx" {{ if (isset .Params "gpx") }}data-gpx-source="{{ .Params.gpx }}" {{ end }}data-map-target="post-map">
-                        <header>
-                            {{ if (isset .Params "gpx") }}<a href="{{ .Params.gpx }}" title="Download GPX file">{{ end }}<h3>Loading...</h3>{{ if (isset .Params "gpx") }}</a>{{ end }}
-                            <span class="start"></span>
-                        </header>
-
-                        <article>
-                            <div class="map" id="post-map"></div>
-                        </article>
-
-                        {{ if (isset .Params "gpx") }}
-                            <footer>
-                                <ul class="info">
-                                    <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
-                                    &mdash; <li>Duration:&nbsp;<span class="duration"></span></li>
-                                    &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
-                                    &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
-                                </ul>
-                            </footer>
-                        {{ end }}
-                    </section>
-                </div>
-            </div>
-        </div>
-    {{ end }}
 
     {{ with .Resources.ByType "image" }}
         <!-- Gallery of attached images -->
@@ -95,35 +70,23 @@
 {{ end }}
 
 {{ define "bottom" }}
+    {{- if .HasShortcode "map" }}
+        <!-- custom map script -->
+        <script src="/js/map-shortcode.js" type="text/javascript"></script>
+    {{- end }}
+
     <!-- javascript for this page -->
     <script type="text/javascript">
         $(document).ready(function() {
-            {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
-                // initialise the map
-                init_map(document.getElementById("post-route"));
-                add_fullscreen_control();
-
-                {{ if (isset .Params "gpx") }}
-                    // add the GPX route
-                    add_gpx(document.getElementById("post-route"), "{{ .Params.title }}");
-                {{ else }}
-                    // add the start point and view that
-                    add_marker("{{ .Params.Title }}", "{{ .RelPermalink }}", "{{ .Params.Date }}", {{ .Params.latitude }}, {{ .Params.longitude }}, "{{ .Params.description }}");
-                    set_view({{ .Params.latitude }}, {{ .Params.longitude }}, {{ .Params.zoom }});
-                    set_title(document.getElementById("post-route"), "{{ .Params.Title }}");
-                {{ end }}
-            {{ end }}
-
-            {{ if .HasShortcode "map" }}
-                // map shortcode javascript
-                console.log('hasshortcodemap {{ .Scratch.Get "mapcount" }}');
-                targets = {{ .Scratch.Get "maptargets" }}
-                {{ range $mapid, $target := (.Scratch.Get "maptargets") }}
-                    var map_{{ $mapid }} = create_map();
+            {{- if .HasShortcode "map" }}
+                {{- range $mapid, $target := .Scratch.Get "maptargets" }}
+                    var mymap = new PostMap(document.getElementById("{{ $target }}"));
+                    mymap.add_fullscreen_control();
+                    mymap.add_route();
 
                     
-                {{ end }}
-            {{ end }}
+                {{- end }}
+            {{- end }}
 
             // fluid width for embedded videos
             $("iframe[src*='www.youtube.com']")
@@ -161,7 +124,7 @@
                         {{- end }}
                     {{- end }}
                 ];
-                add_photo_layer(photos);
+                //add_photo_layer(photos);
             {{ end }}
         });
     </script>

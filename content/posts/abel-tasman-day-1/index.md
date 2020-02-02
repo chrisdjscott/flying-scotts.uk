@@ -61,6 +61,6 @@ This was the first hut we had stayed in and it seemed like a good one.
 
 Testing map below
 
-{{< map gpx="abel-tasman-day-1.gpx" title="Test map" >}}
+{{< map gpx="abel-tasman-day-1.gpx" title="Hello, World!" >}}
 
 After test map
