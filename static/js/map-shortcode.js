@@ -177,5 +177,6 @@ function PostMap(mapelt) {
     return Object.freeze({
         add_fullscreen_control,
         add_route,
+        add_photo_layer,
     });
 }

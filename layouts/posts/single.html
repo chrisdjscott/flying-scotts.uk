@@ -78,16 +78,6 @@
     <!-- javascript for this page -->
     <script type="text/javascript">
         $(document).ready(function() {
-            {{- if .HasShortcode "map" }}
-                {{- range $mapid, $target := .Scratch.Get "maptargets" }}
-                    var mymap = new PostMap(document.getElementById("{{ $target }}"));
-                    mymap.add_fullscreen_control();
-                    mymap.add_route();
-
-                    
-                {{- end }}
-            {{- end }}
-
             // fluid width for embedded videos
             $("iframe[src*='www.youtube.com']")
                 .addClass("embed-responsive-item")
@@ -105,8 +95,7 @@
             // PhotoSwipe
             initPhotoSwipeFromDOM('.post-photos');
 
-            {{ if (or (isset .Params "gpx") (and (isset .Params "latitude") (isset .Params "longitude"))) }}
-                // add photos with gps info to the map
+            {{- if .HasShortcode "map" }}
                 var photos = [
                     {{- with .Resources.ByType "image" }}
                         {{- range $index, $image := . }}
@@ -124,8 +113,14 @@
                         {{- end }}
                     {{- end }}
                 ];
-                //add_photo_layer(photos);
-            {{ end }}
+
+                {{- range $mapid, $target := .Scratch.Get "maptargets" }}
+                    var mymap = new PostMap(document.getElementById("{{ $target }}"));
+                    mymap.add_fullscreen_control();
+                    mymap.add_route();
+                    mymap.add_photo_layer(photos);
+                {{- end }}
+            {{- end }}
         });
     </script>
 {{ end }}
