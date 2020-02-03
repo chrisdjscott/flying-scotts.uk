@@ -6,7 +6,6 @@ author: Chris Scott
 image: 001_whangaparoa-head.jpg
 latitude: -36.623927
 longitude: 174.773713
-gpx: whangaparoa-head.gpx
 tags:
   - kayak
 categories:
@@ -25,3 +24,5 @@ After unloading the kayaks at Matakatia beach, driving across to the finish poin
 During the first half we were quite exposed to the wind and it got a bit choppy. After going around the head we were sheltered from the wind and it was a very pleasant paddle back.
 
 {{< youtube PUnWb-0rqGY >}}
+
+{{< map gpx="whangaparoa-head.gpx" >}}

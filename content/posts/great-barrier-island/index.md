@@ -34,3 +34,5 @@ On Great Barrier we walked to Mount Hobson, starting along [Kaitoke Hot Springs 
 {{< photo src="004_view-mount-hobson.jpg" title="View from Mount Hobson" >}}
 
 On the way back we took a wrong turn down South Fork Track, not realising we had gone the wrong way until we reached a suspension bridge we hadn't crossed on the way up. Luckily we still had time to make it back.
+
+{{< map >}}

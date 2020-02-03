@@ -6,7 +6,6 @@ author: Chris Scott
 image: 099_IMG_0828.jpg
 latitude: -40.996762
 longitude: 173.004810
-gpx: abel-tasman-day-1.gpx
 tags:
   - hike
 categories:
@@ -58,3 +57,5 @@ There was still lots of really nice scenery and even a big swing bridge, which I
 This was the first hut we had stayed in and it seemed like a good one.
 
 {{< youtube fQyleGOVdkM >}}
+
+{{< map gpx="abel-tasman-day-1.gpx" >}}

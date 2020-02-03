@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_rangitoto-run.jpg
 latitude: -36.808316
 longitude: 174.861928
-gpx: rangitoto-run.gpx
 tags:
   - trail run
 categories:
@@ -35,3 +34,5 @@ turned out to be much rougher than the others on the island, consisting of large
 rock. It was very difficult to run over and we started to wonder if we would make it back to the
 ferry in time. Fortunately the path eventually improved and, with a fast last couple of km’s (and
 a slightly delayed ferry), we just made it back in time!
+
+{{< map gpx="rangitoto-run.gpx" >}}

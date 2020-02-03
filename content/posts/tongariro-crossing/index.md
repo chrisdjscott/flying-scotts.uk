@@ -6,7 +6,6 @@ author: Chris Scott
 image: 003_tongariro-crossing.jpg
 latitude: -39.144481
 longitude: 175.581025
-gpx: tongariro-crossing.gpx
 tags:
   - hike
 categories:
@@ -39,3 +38,5 @@ We made it down the narrow, ash covered descent towards the Emerald Lakes and th
 {{< photo src="005_emerald-lakes.jpg" title="Emerald Lakes" >}}
 
 
+
+{{< map gpx="tongariro-crossing.gpx" >}}

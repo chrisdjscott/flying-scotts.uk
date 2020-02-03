@@ -6,7 +6,6 @@ author: Chris Scott
 image: 003_french-bay-kayak.jpg
 latitude: -36.948761
 longitude: 174.666103
-gpx: french-bay-kayak.gpx
 tags:
   - kayak
 categories:
@@ -30,3 +29,5 @@ We hugged the coast on the way to Blockhouse Bay, looking at all the little beac
 Check out the colour coordination from Gemma.
 
 {{< photo src="002_colour-coordination.jpg" title="Colour coordination" >}}
+
+{{< map gpx="french-bay-kayak.gpx" >}}

@@ -6,7 +6,6 @@ author: Chris Scott
 image: 010_ernies-track-view-2.jpg
 latitude: -37.090857
 longitude: 175.154286
-gpx: ernies-track-loop.gpx
 tags:
   - trail run
 categories:
@@ -79,3 +78,5 @@ I was able to run this last section and it passed really quickly, although might
 
 I was across the dam and down to the car in just over three hours, almost exactly the same time as the other person who set off at the same time and did the same loop in the opposite direction.
 I enjoyed this loop and will hopefully do some more in the area, Kauri Dieback closures permitting.
+
+{{< map gpx="ernies-track-loop.gpx" >}}

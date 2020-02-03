@@ -6,7 +6,6 @@ author: Chris Scott
 image: 015_IMG_20180630_120152.jpg
 latitude: -37.090857
 longitude: 175.154286
-gpx: pukapuka-track-loop.gpx
 tags:
   - trail run
 categories:
@@ -71,3 +70,5 @@ From there it was a quick descent back down to the dam and car park.
 The mist had cleared up by now and it was turning into a beautiful day.
 
 {{< photo src="016_IMG_20180630_120941.jpg" title="Upper Mangatawhiri Reservoir" >}}
+
+{{< map gpx="pukapuka-track-loop.gpx" >}}

@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_waterfall.jpg
 latitude: -45.066846
 longitude: 168.536778
-gpx: mt-crichton-loop-track.gpx
 tags:
   - hike
 categories:
@@ -50,3 +49,5 @@ I managed to cross the creek on some stones but gave up as the bigger rocks were
 {{< photo src="005_river.jpg" title="View to base of waterfall along the creek" >}}
 
 This was a good walk and definitely worthwhile, even in the rain.
+
+{{< map gpx="mt-crichton-loop-track.gpx" >}}

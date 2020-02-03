@@ -6,7 +6,6 @@ author: Chris Scott
 image: 001_early-start.jpg
 latitude: -36.193088
 longitude: 175.412928
-gpx: great-barrier-island-day-2.gpx
 tags:
   - hike
 categories:
@@ -96,3 +95,5 @@ The weather was pretty bad the next day but luckily we were able to get on one o
 It was a pretty rough flight, and we didn't feel good on the descent through the thunderstorms in Auckland, but we were glad to make it back on time.
 
 {{< youtube 8dBV2uxdWxQ >}}
+
+{{< map gpx="great-barrier-island-day-2.gpx" >}}

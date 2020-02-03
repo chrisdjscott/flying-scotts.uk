@@ -6,7 +6,6 @@ author: Chris Scott
 image: 008_IMG_20180728_104229.jpg
 latitude: -39.199858
 longitude: 175.541656
-gpx: taranaki-falls-loop.gpx
 tags:
   - hike
 categories:
@@ -58,3 +57,5 @@ After the falls we climbed up on the upper track, which was quite a bit more exp
 Eventually, we were back into the shelter of trees again and the track headed back down to the carpark.
 
 {{< photo src="012_IMG_20180728_111921.jpg" title="Forest track" >}}
+
+{{< map gpx="taranaki-falls-loop.gpx" >}}

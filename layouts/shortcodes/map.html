@@ -1,0 +1,31 @@
+<!-- counter for how many maps have been added -->
+{{- with (.Page.Scratch.Get "mapcount") -}}
+{{- else -}}
+	{{- .Page.Scratch.Set "mapcount" 0 -}}
+{{- end -}}
+<!-- map target -->
+{{- .Page.Scratch.Add "maptargets" (slice (printf "post-route-%d" (.Page.Scratch.Get "mapcount"))) -}}
+<!-- Map of the route -->
+<section id='post-route-{{ .Page.Scratch.Get "mapcount" }}' class="gpx" {{ with .Get "gpx" }}data-gpx-source="{{ . }}" {{ else }}{{ with .Get "lat" }}data-lat="{{ . }}" {{ else }}{{ with .Page.Param "latitude" }}data-lat="{{ . }}" {{ end }}{{ end }}{{ with .Get "lon" }}data-lon="{{ . }}" {{ else }}{{ with .Page.Param "longitude" }}data-lon="{{ . }}" {{ end }}{{ end }}{{ with .Get "zoom" }}data-zoom="{{ . }}" {{ end }}{{ end }}data-map-target='post-map-{{ .Page.Scratch.Get "mapcount" }}' data-title='{{ with .Get "title" }}{{ . }}{{ else }}{{ .Page.Title }}{{ end }}'>
+    <header>
+        {{ with .Get "gpx" }}<a href="{{ . }}" title="Download GPX file">{{ end }}<h3>Loading...</h3>{{ with .Get "gpx" }}</a>{{ end }}
+        <span class="start"></span>
+    </header>
+
+    <article>
+        <div class="map" id='post-map-{{ .Page.Scratch.Get "mapcount" }}'></div>
+    </article>
+    {{- with .Get "gpx" }}
+
+    <footer>
+        <ul class="info">
+            <li>Distance:&nbsp;<span class="distance"></span>&nbsp;km</li>
+            &mdash; <li>Duration:&nbsp;<span class="duration"></span></li>
+            &mdash; <li>Pace:&nbsp;<span class="pace"></span>/km</li>
+            &mdash; <li>Ascent:&nbsp;<span class="ascent"></span>&nbsp;m</li>
+        </ul>
+    </footer>
+    {{- end }}
+</section>
+<!-- increment counter -->
+{{- .Page.Scratch.Add "mapcount" 1 -}}

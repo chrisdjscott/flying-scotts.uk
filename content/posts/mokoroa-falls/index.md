@@ -6,7 +6,6 @@ author: Chris Scott
 image: 001_mokoroa-falls.jpg
 latitude: -36.847821
 longitude: 174.476446
-gpx: mokoroa-falls.gpx
 tags:
   - walk
 categories:
@@ -31,3 +30,5 @@ We managed to keep our feet dry crossing the rocks to get to the viewing point.
 {{< photo src="003_stepping-stones.jpg" title="Stepping stones" >}}
 
 {{< youtube WN5mCZ7cDiE >}}
+
+{{< map gpx="mokoroa-falls.gpx" >}}

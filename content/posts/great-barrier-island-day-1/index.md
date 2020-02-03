@@ -6,7 +6,6 @@ author: Chris Scott
 image: 009_IMG_20180412_131324.jpg
 latitude: -36.242644
 longitude: 175.467723
-gpx: great-barrier-island-day-1.gpx
 tags:
   - hike
 categories:
@@ -74,3 +73,5 @@ We almost had it to ourselves, with just one other person turning up.
 We settled down for the night to howling wind, which was causing the whole hut to shake constantly.
 
 {{< youtube p9U8qMl8yig >}}
+
+{{< map gpx="great-barrier-island-day-1.gpx" >}}

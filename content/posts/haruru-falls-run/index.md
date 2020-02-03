@@ -6,7 +6,6 @@ author: Chris Scott
 image: 004_haruru-falls-run.jpg
 latitude: -35.281427
 longitude: 174.088073
-gpx: haruru-falls-run.gpx
 tags:
   - trail run
 categories:
@@ -37,3 +36,5 @@ At the waterfall we saw some chickens chasing each other around the car park.
 After the waterfall we looped around on some gravel roads back to the start.
 
 {{< photo src="003_heading-back.jpg" title="Bay of Islands" >}}
+
+{{< map gpx="haruru-falls-run.gpx" >}}

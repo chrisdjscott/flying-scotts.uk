@@ -6,7 +6,6 @@ author: Chris Scott
 image: 001_rocks.jpg
 latitude: -37.004118
 longitude: 174.560630
-gpx: karamatura-falls-walk.gpx
 tags:
   - walk
 categories:
@@ -30,3 +29,5 @@ This last section was a bit more technical, with some clambering over rocks.
 {{< photo src="003_infront-of-falls.jpg" title="Karamatura Falls" >}}
 
 There was time to stop in Huia on the way home for an ice cream on the beach.
+
+{{< map gpx="karamatura-falls-walk.gpx" >}}

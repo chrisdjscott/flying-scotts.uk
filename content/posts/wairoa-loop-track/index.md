@@ -6,7 +6,6 @@ author: Chris Scott
 image: 009_wairoa-loop-track.jpg
 latitude: -37.111970
 longitude: 175.123679
-gpx: wairoa-loop-track.gpx
 tags:
   - trail run
 categories:
@@ -59,3 +58,5 @@ The final section was a descent through a forest and along a stream. This was a 
 {{< photo src="010_upper-mangatawhiri-lookout.jpg" title="Upper Mangatawhiri Lookout" >}}
 
 This was a good loop and I came back with Gemma a few weeks later.
+
+{{< map gpx="wairoa-loop-track.gpx" >}}

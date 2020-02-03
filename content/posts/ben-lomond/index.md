@@ -6,7 +6,6 @@ author: Chris Scott
 image: 099_IMG_20171118_135345.jpg
 latitude: -45.037728
 longitude: 168.648914
-gpx: ben-lomond.gpx
 tags:
   - hike
 categories:
@@ -47,3 +46,5 @@ Gemma was a bit unsure of her footing in places and kept grabbing onto these pri
 Walking back down through the forest was good fun. At the bottom we cooled off by paddling in the lake and then headed over to Wanaka, where we stayed at the [Lake Outlet Holiday Park](http://www.lakeoutlet.co.nz/).
 
 {{< youtube NSJJuPRBiZc >}}
+
+{{< map gpx="ben-lomond.gpx" >}}

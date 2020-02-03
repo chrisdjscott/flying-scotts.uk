@@ -6,7 +6,6 @@ author: Chris Scott
 image: 005_lake-tekapo.jpg
 latitude: -43.998618
 longitude: 170.461252
-gpx: mt-john-observatory.gpx
 tags:
   - walk
 categories:
@@ -53,3 +52,5 @@ After a couple of hours relaxing the the Tekapo Springs hot pools we went back t
 There were lots of ducks wandering round the campsite and they took an interest in Gemma's flip flops (see video).
 
 {{< youtube upM6nCWuDYk >}}
+
+{{< map gpx="mt-john-observatory.gpx" >}}

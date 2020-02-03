@@ -7,7 +7,6 @@ description = ""
 latitude = ""
 longitude = ""
 zoom = ""
-gpx = ""
 draft = true
 comments = true
 categories = [

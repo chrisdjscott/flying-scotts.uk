@@ -43,10 +43,6 @@ collections: # A list of collections the CMS should be able to edit
         name: "image"
         widget: "image"
         default: "/img/post-bg.jpg"
-      - label: "GPX File"
-        name: "gpx"
-        widget: "file"
-        required: false
       - label: "Latitude"
         name: "latitude"
         widget: "number"

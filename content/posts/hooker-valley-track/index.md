@@ -6,7 +6,6 @@ author: Chris Scott
 image: 003_hooker-valley.jpg
 latitude: -43.718898
 longitude: 170.093526
-gpx: hooker-valley-track.gpx
 tags:
   - hike
 categories:
@@ -47,3 +46,5 @@ The water was noticeably colder than in Lake Wanaka.
 We went to sleep early as we had booked onto a star gazing trip, starting at 2am the next morning.
 
 {{< youtube Dz9mOTILYSU >}}
+
+{{< map gpx="hooker-valley-track.gpx" >}}
