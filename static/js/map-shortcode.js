@@ -3,7 +3,6 @@
 function PostMap(mapelt) {
     var elt = mapelt;
     if (!elt) throw new Error("elt does not exist in init_map");
-    console.log("Creating new map on: ", elt);
     var mapid = elt.getAttribute('data-map-target');
     if (!mapid) throw new Error("data-map-target does not exist in init_map");
     var markers = null;
@@ -99,17 +98,19 @@ function PostMap(mapelt) {
             add_gpx(title);
         }
         else {
-            var lat = elt.getAttribute("data-latitude");
-            var lon = elt.getAttribute("data-longitude");
-            var zoom = elt.getAttribute("data-zoom");
-            if (lat && lon && zoom) {
+            if (elt.hasAttribute("data-lat") && elt.hasAttribute("data-lon")) {
+                var lat = elt.getAttribute("data-lat");
+                var lon = elt.getAttribute("data-lon");
+                // use default zoom of 13 if not set
+                var zoom = elt.getAttribute("data-zoom");
+                if (!zoom) zoom = 13;
                 // add the start point and view that
                 add_marker(title, permalink, date, lat, lon, "");
                 set_view(lat, lon, zoom);
                 set_title(title);
             }
             else {
-                throw new Error("Map must specify either gpx or latitude, longitude and zoom!");
+                throw new Error("Map must specify either gpx or latitude and longitude");
             }
         }
     }

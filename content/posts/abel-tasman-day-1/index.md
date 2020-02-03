@@ -6,7 +6,6 @@ author: Chris Scott
 image: 099_IMG_0828.jpg
 latitude: -40.996762
 longitude: 173.004810
-gpx: abel-tasman-day-1.gpx
 tags:
   - hike
 categories:
@@ -59,8 +58,4 @@ This was the first hut we had stayed in and it seemed like a good one.
 
 {{< youtube fQyleGOVdkM >}}
 
-Testing map below
-
-{{< map gpx="abel-tasman-day-1.gpx" title="Hello, World!" >}}
-
-After test map
+{{< map gpx="abel-tasman-day-1.gpx" >}}
