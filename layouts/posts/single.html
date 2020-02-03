@@ -107,7 +107,7 @@
                                     "thumbnail": "{{ $thumb.RelPermalink }}",
                                     "url": "{{ $image.RelPermalink }}",
                                     "description": "{{ $image.Title }}",
-                                    "pid": {{ (add $index 1) }},
+                                    "pid": {{ add $index 1 }},
                                 },
                             {{- end }}
                         {{- end }}

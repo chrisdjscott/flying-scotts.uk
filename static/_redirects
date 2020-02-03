@@ -5,6 +5,9 @@ https://flying-scotts.netlify.com/* https://www.flying-scotts.uk/:splat 301!
 /blog /
 /blog/* /:splat
 
+# redirect lektor RSS file to hugo
+/feed.xml /index.xml
+
 # redirects to the old website
 /2014/12/28/christmas-run-in-hamsterley-forest https://old.flying-scotts.uk/2014/12/28/christmas-run-in-hamsterley-forest
 /2015/01/04/edwinstowe-run https://old.flying-scotts.uk/2015/01/04/edwinstowe-run
