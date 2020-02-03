@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_IMG_20171228_135914.jpg
 latitude: -36.606137
 longitude: 174.889094
-gpx: tiritiri-matangi-island.gpx
 tags:
   - walk
 categories:
@@ -39,3 +38,5 @@ The wind was still pretty high for the ferry trip back but the sea didn't seem t
 After getting back to Auckland we had a nice meal followed by an ice cream from [Giapo](https://www.giapo.com/).
 
 {{< youtube 6ETGHjNKrcw >}}
+
+{{< map gpx="tiritiri-matangi-island.gpx" >}}

@@ -6,7 +6,6 @@ author: Chris Scott
 image: 012_IMG_20190101_102404.jpg
 latitude: -36.846446
 longitude: 174.474227
-gpx: goldie-bush.gpx
 tags:
   - trail run
 categories:
@@ -66,3 +65,5 @@ I'm not sure how long it would take them to get all the way down the track!
 That left just the steep climb back up to the car.
 
 {{< youtube a2ezazjRJTw >}}
+
+{{< map gpx="goldie-bush.gpx" >}}

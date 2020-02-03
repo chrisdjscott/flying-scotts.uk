@@ -6,7 +6,6 @@ author: Chris Scott
 image: 003_dolphin.jpg
 latitude: -43.834611
 longitude: 172.945432
-gpx: akaroa-kayak-with-dolphins.gpx
 tags:
   - kayak
 categories:
@@ -51,3 +50,5 @@ I'm not sure Gemma enjoyed much of the views with her eyes shut (sleeping) for m
 {{< youtube gQYPHz85P8Y >}}
 
 A playlist containing all the videos from our holiday is [here](https://www.youtube.com/playlist?list=PLn395bT2uxGUtIpnEygg-NJ1yrB1HpiWF).
+
+{{< map gpx="akaroa-kayak-with-dolphins.gpx" >}}

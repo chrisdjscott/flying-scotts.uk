@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_IMG_20180223_083817.jpg
 latitude: -39.203717
 longitude: 174.056130
-gpx: pouakai-tarn-and-bell-falls.gpx
 tags:
   - hike
 categories:
@@ -56,3 +55,5 @@ It was slow going back up to Holly Hut but, after stopping for lunch part way ac
 This was a great walk and we'll be back to do more in the area.
 
 {{< youtube l7Aad6dievE >}}
+
+{{< map gpx="pouakai-tarn-and-bell-falls.gpx" >}}

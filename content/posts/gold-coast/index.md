@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_beach.jpg
 latitude: -27.164346
 longitude: 153.368860
-gpx: gold-coast.gpx
 tags:
   - holiday
 categories:
@@ -34,3 +33,5 @@ Back in Gold Coast we had a great view from the apartment.
 We had a good time looking around Gold Coast, although it was very hot and I struggled in the heat; we had to get up early to run!
 
 {{< youtube 84P8kfMVJfk >}}
+
+{{< map gpx="gold-coast.gpx" >}}

@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_tawharanui-regional-park.jpg
 latitude: -36.369724
 longitude: 174.833626
-gpx: tawharanui-regional-park.gpx
 tags:
   - hike
 categories:
@@ -56,3 +55,5 @@ We did an out and back (with a small loop at the far end) to the Tawharanui Poin
 
 Finally we headed back down North Coast track, navigating around a big herd of cows in one field, and back to the car park.
 We were really impressed with this park and the wildlife!
+
+{{< map gpx="tawharanui-regional-park.gpx" >}}

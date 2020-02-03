@@ -6,7 +6,6 @@ author: Chris Scott
 image: 099_IMG_0872.jpg
 latitude: -40.916049
 longitude: 173.048610
-gpx: abel-tasman-day-2.gpx
 tags:
   - hike
 categories:
@@ -55,3 +54,5 @@ We had most of the afternoon free to relax and it was interesting to watch peopl
 {{< photo src="099_IMG_0912.jpg" title="Estuary crossing at low tide" >}}
 
 {{< youtube NR6uZmaHiL8 >}}
+
+{{< map gpx="abel-tasman-day-2.gpx" >}}

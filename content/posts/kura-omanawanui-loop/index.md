@@ -4,7 +4,6 @@ date: 2016-12-24
 publishdate: 2016-12-24
 image: 004_background.jpg
 author: Chris Scott
-gpx: trail.gpx
 latitude: -37.039238
 longitude: 174.507223
 zoom: 13
@@ -47,3 +46,5 @@ was very steep in places.
 {{< photo src="003_IMG_20161224_153313.jpg" title="Manukau Harbour" >}}
 
 {{< photo src="005_IMG_3507.jpg" title="The ridge we walked along" >}}
+
+{{< map gpx="trail.gpx" >}}

@@ -6,7 +6,6 @@ author: Chris Scott
 image: 004_roys-peak-view.jpg
 latitude: -44.673289
 longitude: 169.071818
-gpx: roys-peak.gpx
 tags:
   - hike
 categories:
@@ -51,3 +50,5 @@ We drove round to Glendhu Bay in the evening and parked on the lakefront to have
 Wanaka is still at the top of our favourite places to go in New Zealand so far!
 
 {{< youtube xXhPSxahZMk >}}
+
+{{< map gpx="roys-peak.gpx" >}}

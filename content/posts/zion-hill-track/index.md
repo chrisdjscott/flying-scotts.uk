@@ -6,7 +6,6 @@ author: Chris Scott
 image: 001_zion-hill-track.jpg
 latitude: -36.986380
 longitude: 174.479324
-gpx: zion-hill-track.gpx
 tags:
   - hike
 categories:
@@ -53,3 +52,5 @@ We spent a bit of time wandering around in a circle (right next to the track acc
 Passing through Tunnel point the track opened out onto Karekare beach and we made our way back to the car park.
 
 {{< photo src="011_IMG_1068.jpg" title="On the way back along Karekare Beach" >}}
+
+{{< map gpx="zion-hill-track.gpx" >}}

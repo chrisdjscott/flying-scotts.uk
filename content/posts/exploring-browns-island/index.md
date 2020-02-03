@@ -6,7 +6,6 @@ author: Chris Scott
 image: 001_st-heliers-beach.jpg
 latitude: -36.850459
 longitude: 174.855553
-gpx: exploring-browns-island.gpx
 tags:
   - kayak
 categories:
@@ -49,3 +48,5 @@ It was a little choppier on the way back but still quite calm.
 See the video below for some clips of our trip.
 
 {{< youtube hgIPp2DHP3k >}}
+
+{{< map gpx="exploring-browns-island.gpx" >}}

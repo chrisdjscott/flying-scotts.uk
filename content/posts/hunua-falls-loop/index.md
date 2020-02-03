@@ -6,7 +6,6 @@ author: Chris Scott
 image: 005_cosseys-reservoir.jpg
 latitude: -37.066546
 longitude: 175.089436
-gpx: hunua-falls-loop.gpx
 tags:
   - trail run
 categories:
@@ -51,3 +50,5 @@ On the way to the waterfall, I stopped off at the upper lookout, where you could
 The waterfall was pretty impressive up close and, as you can see, there was quite a lot of water going over.
 
 {{< youtube eY0WuqfFigs >}}
+
+{{< map gpx="hunua-falls-loop.gpx" >}}

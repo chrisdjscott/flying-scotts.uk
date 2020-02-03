@@ -6,7 +6,6 @@ author: Chris Scott
 image: 004_beach.jpg
 latitude: -36.838415
 longitude: 175.806858
-gpx: cathedral-cove.gpx
 tags:
   - kayak
 categories:
@@ -41,3 +40,5 @@ The next day we went on a kayak tour around the same area. It was a bit colder t
 {{< photo src="005_kayaking.jpg" title="Kayaking near Cathedral Cove" >}}
 
 {{< youtube o-hj7iOA7Ns >}}
+
+{{< map gpx="cathedral-cove.gpx" >}}

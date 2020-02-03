@@ -21,3 +21,5 @@ We went for a short walk around the [Mercer Bay Loop](http://regionalparks.auckl
 We were out for about 1 hour and will definitely go back to do a longer one on part of the Hillary trail, as the area looked stunning.
 
 {{< photo src="001_mercer-bay.jpg" title="Mercer Bay" >}}
+
+{{< map >}}

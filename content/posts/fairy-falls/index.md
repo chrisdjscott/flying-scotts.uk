@@ -6,7 +6,6 @@ author: Chris Scott
 image: 099_upper-fairy-falls.jpg
 latitude: -36.915789
 longitude: 174.543191
-gpx: fairy-falls.gpx
 tags:
   - walk
 categories:
@@ -40,3 +39,5 @@ It also made the stream crossing a bit more interesting, as we had to climb over
 {{< photo src="099_stream-crossing.jpg" title="Stream crossing after storm" >}}
 
 {{< youtube -1clUdw1Pi4 >}}
+
+{{< map gpx="fairy-falls.gpx" >}}

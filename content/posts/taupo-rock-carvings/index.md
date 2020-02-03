@@ -6,7 +6,6 @@ author: Chris Scott
 image: 001_taupo-rock-carvings.jpg
 latitude: -38.687383
 longitude: 176.064290
-gpx: taupo-rock-carvings.gpx
 tags:
   - kayak
 categories:
@@ -31,3 +30,5 @@ After a quick search I found the Maori Rock Carvings which was an 18 km trip out
 I had the kayak for 5 hours but didn't hang around and got back in under 3.5. It was a nice day to paddle, with not much wind, and was the longest I had spent kayaking in one go, with only a brief stop at the carvings to take a photo and have something to eat and drink. By the time I returned my back was pretty sore!
 
 {{< photo src="001_taupo-rock-carvings.jpg" title="Lake Taupo" >}}
+
+{{< map gpx="taupo-rock-carvings.gpx" >}}

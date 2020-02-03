@@ -6,7 +6,6 @@ author: Chris Scott
 image: IMG_20180218_082841.jpg
 latitude: -40.865190
 longitude: 173.017659
-gpx: abel-tasman-day-3.gpx
 tags:
   - hike
 categories:
@@ -33,3 +32,5 @@ The water taxi stopped off at a couple of sightseeing spots before getting back 
 After getting some food we were both relieved to get back to our room for a much needed shower and rest.
 
 {{< youtube I79W-8WE5z4 >}}
+
+{{< map gpx="abel-tasman-day-3.gpx" >}}

@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_lake-wanaka-kayak.jpg
 latitude: -44.695568
 longitude: 169.132631
-gpx: lake-wanaka-kayak.gpx
 tags:
   - kayak
 categories:
@@ -46,3 +45,5 @@ The weather was starting to get very cloudy as we drove alongside Lake Pukaki, u
 {{< photo src="005_glentanner-park.jpg" title="Glentanner campsite" >}}
 
 {{< youtube _lfLizv6HoE >}}
+
+{{< map gpx="lake-wanaka-kayak.gpx" >}}

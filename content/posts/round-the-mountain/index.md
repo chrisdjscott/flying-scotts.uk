@@ -6,7 +6,6 @@ author: Chris Scott
 image: 002_round-the-mountain.jpg
 latitude: -43.800508
 longitude: 172.968436
-gpx: round-the-mountain.gpx
 tags:
   - trail run
 categories:
@@ -48,3 +47,5 @@ Back at the campsite we enjoyed the sunset before heading to bed.
 {{< photo src="005_sunset.jpg" title="Sunset from Akaroa Top 10 campsite" >}}
 
 {{< youtube VYa_m-eTlvM >}}
+
+{{< map gpx="round-the-mountain.gpx" >}}

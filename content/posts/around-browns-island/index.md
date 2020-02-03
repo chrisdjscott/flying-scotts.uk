@@ -6,7 +6,6 @@ author: Chris Scott
 image: 003_around-browns-island.jpg
 latitude: -36.846766
 longitude: 174.829466
-gpx: around-browns-island.gpx
 tags:
   - kayak
 categories:
@@ -34,3 +33,5 @@ From there I headed out towards Browns Island (you can just make out Browns Isla
 The crossing to Browns Island didn't seem to take long and once I got there I kayaked around the island in a clockwise direction.
 
 I didn't stop on the island this time but just headed straight back to the mainland, after a brief stop to wait for some fog to blow away from where I wanted to go.
+
+{{< map gpx="around-browns-island.gpx" >}}

@@ -6,7 +6,6 @@ author: Chris Scott
 image: 003_waitawa-regional-park.jpg
 latitude: -36.931178
 longitude: 175.140908
-gpx: waitawa-regional-park.gpx
 tags:
   - hike
 categories:
@@ -45,3 +44,5 @@ We played frisbee for a while back at the beach, where Jo and the boys had spent
 {{< photo src="005_frisbee.jpg" title="Frisbee" >}}
 
 {{< youtube GsqJeXicRPw >}}
+
+{{< map gpx="waitawa-regional-park.gpx" >}}
