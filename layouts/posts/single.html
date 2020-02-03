@@ -115,8 +115,9 @@
                 ];
 
                 var postmaps = [];
+                var mymap;
                 {{- range $mapid, $target := .Scratch.Get "maptargets" }}
-                    var mymap = new PostMap(document.getElementById("{{ $target }}"));
+                    mymap = new PostMap(document.getElementById("{{ $target }}"));
                     mymap.add_fullscreen_control();
                     mymap.add_route();
                     mymap.add_photo_layer(photos);
