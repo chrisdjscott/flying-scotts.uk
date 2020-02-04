@@ -125,9 +125,12 @@ function PostMap(mapelt) {
         function _c(c) { return elt.getElementsByClassName(c)[0]; }
 
         var elev = L.control.elevation({
-            position: "bottomright",
             theme: "steelblue-theme",
+            detached: false,
+            autohide: true,
             collapsed: true,
+            position: "bottomright",
+            summary: false,
         });
         elev.addTo(map);
 
