@@ -24,6 +24,8 @@ resources:
     title: Telava Arches
   - src: 04_matapa-chasm.jpg
     title: Matapa Chasm
+  - src: 05_matapa-chasm-gem.jpg
+    title: Matapa Chasm
 ---
 
 A belated post about our holiday to the beautiful Pacific island of Niue.
@@ -46,12 +48,12 @@ Telava Arches was a short walk on a rocky path through a forest and a short clim
 
 We down to Matapa Chasm after getting back from Telava Arches. It was a really impressive spot for swimming, a deep pool with steep walls on each side, lots of fish to see swimming around and a rock at the far end blocking off the open sea.
 
-
-
-
-Use photos from both visits to Matapa Chasm
+{{< photo src="05_matapa-chasm-gem.JPG" title="Matapa Chasm" >}}
 
 {{< map gpx="matapa-telava.gpx" title="Matapa Chasm and Telava Arches" >}}
+
+## Limu Pools etc
+
 
 ## Boat trip
 
