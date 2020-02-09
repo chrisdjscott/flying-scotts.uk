@@ -26,9 +26,11 @@ Trevor, dogs
 
 ## Talava Arches and Matapa Chasm
 
-[Activity](https://connect.garmin.com/modern/activity/3075752678)
+Potholes...
 
 Use photos from both visits to Matapa Chasm
+
+{{< map gpx="matapa-telava.gpx" title="Matapa Chasm and Telava Arches" >}}
 
 ## Boat trip
 
