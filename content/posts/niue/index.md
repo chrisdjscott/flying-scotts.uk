@@ -36,9 +36,13 @@ After picking up our hire car (a bit dated) from the airport we headed to the re
 This was our first encounter with Niue's roads and can be summed up with one word -- potholes!
 Nobody seems to drive on the left hand side of the road, rather swerving all over to avoid the massive potholes that are everywhere.
 On the way we passed [Trevor](https://www.facebook.com/thepuddleniueisland/), the only duck on Niue, in his pond (large pothole that the fire service top up with water each day).
-The resort was very nice, there were great views and, more importantly, air conditioning in the room.
 
 {{< photo src="01_trevor.jpg" title="Trevor the duck" >}}
+
+The resort was very nice, there were great views and, more importantly, air conditioning in the room.
+There was also a short track down to the sea where you got a pretty impressive view of the waves coming in.
+
+{{< youtube ellAGg7Hh5s >}}
 
 ## Talava Arches and Matapa Chasm
 
