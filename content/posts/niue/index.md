@@ -3,7 +3,7 @@ title: Niue
 date: 2018-10-06
 publishdate: 2020-02-04
 author: Chris Scott
-image: IMG_1683.JPG
+image: 00_matavai.JPG
 latitude: -19.111102
 longitude: -169.913145
 tags:
@@ -26,6 +26,8 @@ resources:
     title: Matapa Chasm
   - src: 05_matapa-chasm-gem.jpg
     title: Matapa Chasm
+  - src: 06_bikeride.jpg
+    title: Bike ride
 ---
 
 A belated post about our holiday to the beautiful Pacific island of Niue.
@@ -46,22 +48,35 @@ Telava Arches was a short walk on a rocky path through a forest and a short clim
 
 {{< photo src="03_telava-arches.jpg" title="Telava Arches" >}}
 
-We down to Matapa Chasm after getting back from Telava Arches. It was a really impressive spot for swimming, a deep pool with steep walls on each side, lots of fish to see swimming around and a rock at the far end blocking off the open sea.
+We down to Matapa Chasm after getting back from Telava Arches. It was a really impressive spot for swimming, a deep pool with steep walls on each side, lots of fish to see swimming around and a rock at the far end blocking off the open sea. We came back a couple of times during the holiday for a swim.
 
 {{< photo src="05_matapa-chasm-gem.JPG" title="Matapa Chasm" >}}
 
 {{< map gpx="matapa-telava.gpx" title="Matapa Chasm and Telava Arches" >}}
 
+## Bike ride
+
+We went out for a bike ride early one day, hiring a couple of mountain bikes from the resort.
+They were not in great condition and the hotel people sounded a bit surprised when we asked for a pump to put some air in the tyres.
+
+{{< photo src="06_bikeride.jpg" title="Bike ride" >}}
+
+We did a clockwise loop around the southern end of the island. Initially we had planned to try and ride on some of the trails that show up on google maps but these turned out to be really overgrown and not well marked so in the end we stuck mainly to the roads.
+As seems to be normal on Niue, we had a bit of a fright when cycling past some houses when their dogs came charging out barking at us. 
+As soon as I heard the dogs I started pedalling hard to get away. Gemma took a different approach and decided to slow right down and hope they'd leave her alone.
+
+We did manage an off road section on the eastern side of the island, although it was not particularly well marked or used, and also stopped off at a sculpture park. It was a very hot ride and we were definitely glad to get back to the air conditioned room to try and cool down.
+
+{{< map gpx="bike-ride.gpx" title="Bike ride" >}}
+
 ## Limu Pools etc
 
+
+{{< map lat=-18.976839 lon=-169.897406 zoom=16 title="Limu Pools" >}}
 
 ## Boat trip
 
 Use photos/videos, e.g. of snorkelling
-
-## Bike ride
-
-[Activity](https://connect.garmin.com/modern/activity/3075754921)
 
 ## Chasm down ladder (forgot name)
 
