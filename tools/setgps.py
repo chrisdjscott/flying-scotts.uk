@@ -20,7 +20,7 @@ try:
 except IOError:
     type, value, traceback = sys.exc_info()
     print("Error opening file:", value)
-    raise IOError("Errpr opening file")
+    raise IOError("Error opening file")
 except JpegFile.InvalidFile:
     type, value, traceback = sys.exc_info()
     print("Error opening file:", value)
