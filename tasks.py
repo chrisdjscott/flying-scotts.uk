@@ -10,38 +10,10 @@ import glob
 
 import invoke
 
-from lektor.builder import Builder
-from lektor.cli import Context
-from lektor.reporter import CliReporter
-
 
 ROOT_DIR = os.path.dirname(__file__)
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'build')
 
-
-@invoke.task(help={'clean': 'Perform a clean first and then build', 'verbose': "Enable verbose build"})
-def build(ctx, clean=False, verbose=False):
-    """
-    Build the website.
-
-    """
-    if clean:
-        # clean first
-        subprocess.check_call(["lektor", "clean", "--output-path", OUTPUT_DIR, "--yes"])
-
-        # also flush the plugins cache
-        subprocess.check_call(["lektor", "plugins", "flush-cache"])
-
-    # run the build
-    lektor_args = ["lektor", "build", "--output-path", OUTPUT_DIR]
-    if verbose:
-        lektor_args.append("--verbose")
-    subprocess.check_call(lektor_args)
-
-    # copy redirect file for netlify
-    redirect_input = os.path.join(ROOT_DIR, "redirects.txt")
-    redirect_output = os.path.join(OUTPUT_DIR, '_redirects')
-    shutil.copy(redirect_input, redirect_output)
 
 
 @invoke.task(help={'title': 'Title of the post (compulsory)', 'slug': 'Custom slug (automatic)',
@@ -137,32 +109,6 @@ body:
         fh.write(templ)
 
 
-def add_photo_meta(photofn, order):
-        metafn = photofn + '.lr'
-        if os.path.exists(metafn):
-            print("Meta file already exists: '%s'" % metafn)
-        else:
-            print("Adding meta file: '%s' (order %d)" % (metafn, order))
-            with open(metafn, "w") as fh:
-                fh.write("_model: image\n")
-                fh.write("---\n")
-                fh.write("description:\n")
-                fh.write("---\n")
-                fh.write("order: %d\n" % order)
-
-
-@invoke.task(help={"filename": "Name (or regexp) of file(s)",
-    "order": "Order parameter for this file (default=99)"})
-def photosmeta(ctx, filename, order=99):
-    """
-    Add meta file for image
-
-    """
-    fns = glob.glob(filename)
-    for fn in fns:
-        add_photo_meta(fn, order)
-
-
 @invoke.task
 def photos(ctx, filename):
     """
@@ -174,9 +120,6 @@ def photos(ctx, filename):
     exif_keep = "-GPSLatitudeRef -GPSLongitudeRef -GPSLatitude -GPSLongitude -GPSInfo -ImageLength -ImageHeight -ImageWidth"
     invoke.run('mogrify -resize "1920x1920>" -quality 70% -interlace Plane {0}'.format(filename), echo=True)
     invoke.run('exiftool -overwrite_original_in_place -all= -tagsFromFile @ {0} {1}'.format(exif_keep, filename), echo=True)
-
-    for fn in glob.glob(filename):
-        add_photo_meta(fn, 99)
 
 
 @invoke.task
