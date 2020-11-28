@@ -78,7 +78,7 @@ We down to Matapa Chasm after getting back from Telava Arches. It was a really i
 
 There was another really nice spot for snorkelling over near Matapa Chasm, called Limu Pools, which we visited a couple of times.
 
-{{< youtube X2JD38eGW5c >}}
+{{< youtube BYxOE5XXVPA >}}
 
 There were many other caves, beaches and snorkelling spots across Niue that we also visited.
 
