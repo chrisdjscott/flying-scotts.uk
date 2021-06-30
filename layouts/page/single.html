@@ -1,11 +1,10 @@
 {{ define "header" }}
     <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="container-fluid position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="page-heading">
-                      <h1>{{ .Title }}</h1>
-                        <hr class="small">
+                        <h1>{{ .Title }}</h1>
                         <span class="subheading">{{ .Description }}</span>
                     </div>
                 </div>
@@ -15,9 +14,9 @@
 {{ end }}
 
 {{ define "main" }}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
               {{ .Content }}
             </div>
         </div>
