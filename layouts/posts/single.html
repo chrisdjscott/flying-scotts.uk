@@ -7,31 +7,30 @@
 
 {{ define "header" }}
     <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
     {{ if isset .Params "image" }}<header class="masthead" style="background-image: url('{{ .Params.image }}')">
       {{ else }}<header class="masthead" style="background-image: url('/img/post-bg.jpg')">
     {{ end }}
-      <div class="container-fluid">
-        <div class="row">
-           <div class="col-lg-8 col-md-10 mx-auto">
-             <div class="post-heading">
-               <h1>{{ .Title }}</h1>
-               <h2 class="subheading">{{ .Description }}</h2>
-               <span class="meta">
-                 {{ partial "meta.html" .}}
-               </span>
-             </div>
-           </div>
+        <div class="container-fluid position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="post-heading">
+                        <h1>{{ .Title }}</h1>
+                         <h2 class="subheading">{{ .Description }}</h2>
+                         <span class="meta">
+                             {{ partial "meta.html" .}}
+                         </span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </header>
 {{ end }}
 
 {{ define "main" }}
     <!-- Post Content -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
               {{ .Content }}
             </div>
         </div>
@@ -39,9 +38,9 @@
 
     {{ with .Resources.ByType "image" }}
         <!-- Gallery of attached images -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="container-fluid px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
                     <hr>
                     <h2>Gallery</h2>
                     <div id="gallery" class="justified-gallery post-photos">
@@ -58,9 +57,9 @@
     {{ end }}
 
     <!-- Comments -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
+    <div class="container-fluid px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
                 <hr>
                 <h2>Comments</h2>
                 {{ partial "comments.html" . }}
