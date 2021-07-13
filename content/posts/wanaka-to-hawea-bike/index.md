@@ -33,8 +33,9 @@ It was a cold start to the day and took us a long time to warm up.
 
 {{< photo src="01_outlet-track.jpg" title="Cold start" >}}
 
-The tracks were well formed and signposted (apparently part of the track had just been opened a few
-days earlier) and there were great views of the mountains in the background most of the way.
+The tracks were well formed and signposted. Apparently the section of track between Albert Town
+and the suspension bridge had just been opened a few days earlier. There were great views of the 
+mountains in the background most of the way.
 
 {{< photo src="07_trail-2.jpg" title="Trail between Albert Town and Hawea" >}}
 
