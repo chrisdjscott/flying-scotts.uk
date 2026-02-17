@@ -83,26 +83,18 @@ def newpost(ctx, title, slug=None, add_gpx=False, description=None, date=None):
     }
 
     # content file
-    content_file = os.path.join(post_dir, "contents.lr")
-    templ = """title: %(title)s
----
-date: %(date)s
----
-pub_date: %(today)s
----
-author: Chris Scott
----
-image:
----
-latitude:
----
-longitude:
----
-gpx: %(gpx_file)s
----
-description: %(description)s
----
-body:
+    content_file = os.path.join(post_dir, "index.md")
+    templ = """+++
+title = "%(title)s"
+date = "%(date)s"
+publishdate = "%(today)s"
+author = "Chris Scott"
+image = ""
+latitude = ""
+longitude = ""
+gpx = "%(gpx_file)s"
+description = "%(description)s"
++++
 
 """ % content_dict
     with open(content_file, "w") as fh:
