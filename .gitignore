@@ -4,3 +4,5 @@ temp/
 .DS_Store
 /public/
 /resources/_gen/
+.cecli*
+.hugo_build.lock
