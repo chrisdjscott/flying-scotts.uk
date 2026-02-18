@@ -41,10 +41,6 @@ disqusShortname = "flying-scotts"
   name = "About"
   url = "/about"
   weight = -180
-[[menu.main]]
-  name = "Admin"
-  url = "/admin"
-  weight = -160
 
 [permalinks]
   posts = "/:year/:1/:2/:title"

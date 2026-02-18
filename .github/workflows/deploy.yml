@@ -1,0 +1,23 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: 'latest'
+          extended: true
+      - name: Build site
+        run: hugo --minify
+      - uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./public
+          branch: gh-pages
+          clean-exclude: pr-preview
+          force: false
