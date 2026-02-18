@@ -2,7 +2,7 @@ baseURL = "https://www.flying-scotts.uk"
 languageCode = "en-gb"
 title = "The Flying Scotts"
 canonifyurls = false
-relativeURLs = true
+relativeURLs = false
 theme = ""
 copyright = "2026 The Flying Scotts"
 disqusShortname = "flying-scotts"
@@ -12,10 +12,8 @@ disqusShortname = "flying-scotts"
 
 [params]
   DateForm = "2 Jan 2006"
-#  Description = "My Blog"
-#  Author = "Chris Scott"
-  postSummariesFrontPage = 4 #Number of post summaries to show on front page, comment out to allow default(4)
-  showReadTime = true #set to false to exclude read time from header of post
+  postSummariesFrontPage = 4
+  showReadTime = true
 
 [params.author]
   name = "Chris Scott"

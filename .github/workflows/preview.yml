@@ -18,14 +18,16 @@ jobs:
           hugo-version: 'latest'
           extended: true
       - name: Build site
-        run: hugo --minify
+        run: hugo --gc --minify --baseURL "https://www.flying-scotts.uk/pr-preview/pr-${{ github.event.number }}"
         if: github.event.action != 'closed'
       - uses: rossjrw/pr-preview-action@v1
         with:
           source-dir: ./public
           preview-branch: gh-pages
           umbrella-dir: pr-preview
+          pr-number: "${{ github.event.number }}"
           action: auto
           wait-for-pages-deployment: true
           comment: true
           qr-code: false
+          pages-base-url: www.flying-scotts.uk
