@@ -42,7 +42,8 @@ resources:
     title: Nearly finished
 ---
 
-
-
+We hired mountain bikes near the finish and they dropped us off at the start for the long cycle back.
+They'd given us a code to lock the bikes up so we weren't in a rush to get back before they closed.
+There was a good climb in the first half and it rained quite heavily during that part but eventually cleared up and was a nice day.
 
 {{< map gpx="twin-coast-cycle-trail.gpx" title="Twin Coast Cycle Trail" >}}
