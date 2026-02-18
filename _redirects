@@ -1,0 +1,31 @@
+# Redirect default Netlify subdomain to primary domain
+https://flying-scotts.netlify.com/* https://www.flying-scotts.uk/:splat 301!
+
+# redirects after moving the posts to root from /blog
+/blog /
+/blog/* /:splat
+
+# redirect lektor RSS file to hugo
+/feed.xml /index.xml
+
+# redirects to the old website
+/2014/12/28/christmas-run-in-hamsterley-forest https://old.flying-scotts.uk/2014/12/28/christmas-run-in-hamsterley-forest
+/2015/01/04/edwinstowe-run https://old.flying-scotts.uk/2015/01/04/edwinstowe-run
+/2015/01/18/the-squires-walk-run https://old.flying-scotts.uk/2015/01/18/the-squires-walk-run
+/2015/01/25/kings-clipstone-run https://old.flying-scotts.uk/2015/01/25/kings-clipstone-run
+/2015/02/15/faringdon-run https://old.flying-scotts.uk/2015/02/15/faringdon-run
+/2015/10/31/budapest https://old.flying-scotts.uk/2015/10/31/budapest
+/2015/12/20/the-flying-scotts https://old.flying-scotts.uk/2015/12/20/the-flying-scotts
+/2015/08/22/europe-trip-2015 https://old.flying-scotts.uk/2015/08/22/europe-trip-2015
+/2016/09/12/whatipu-beach https://old.flying-scotts.uk/2016/09/12/whatipu-beach
+/2016/02/01/first-week-in-auckland https://old.flying-scotts.uk/2016/02/01/first-week-in-auckland
+/2016/02/20/queenstown https://old.flying-scotts.uk/2016/02/20/queenstown
+/2016/02/22/gem-arrives-in-auckland https://old.flying-scotts.uk/2016/02/22/gem-arrives-in-auckland
+/2016/04/27/race-time https://old.flying-scotts.uk/2016/04/27/race-time
+/2016/04/04/easter-travels https://old.flying-scotts.uk/2016/04/04/easter-travels
+/2016/04/25/home-sweet-home https://old.flying-scotts.uk/2016/04/25/home-sweet-home
+/2016/12/23/visitors https://old.flying-scotts.uk/2016/12/23/visitors
+/2016/03/15/sea-swims https://old.flying-scotts.uk/2016/03/15/sea-swims
+/2016/06/13/rangitoto-island https://old.flying-scotts.uk/2016/06/13/rangitoto-island
+/2016/07/31/working-life https://old.flying-scotts.uk/2016/07/31/working-life
+/2016/05/24/kiwi-birthday https://old.flying-scotts.uk/2016/05/24/kiwi-birthday

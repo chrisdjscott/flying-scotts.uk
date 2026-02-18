@@ -1,0 +1,69 @@
+backend:
+  name: git-gateway
+  accept_roles:
+    - admin
+    - editor
+
+publish_mode: editorial_workflow
+
+media_folder: "static/uploads" # Folder where user uploaded files should go
+public_folder: "uploads"
+
+collections: # A list of collections the CMS should be able to edit
+  - name: "posts" # Used in routes, ie.: /admin/collections/:slug/edit
+    label: "Posts" # Used in the UI, ie.: "New Post"
+    label_singular: "Post"
+    folder: "content/posts" # The path to the folder where the documents are stored
+    path: '{{slug}}/index'
+    media_folder: ''
+    create: true # Allow users to create new documents in this collection
+    fields: # The fields each document in this collection have
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Publish Date"
+        name: "publishdate"
+        widget: "datetime"
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+        default: false
+      - label: "Comments"
+        name: "comments"
+        widget: "boolean"
+        default: true
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+      - label: "Image"
+        name: "image"
+        widget: "image"
+        default: "/img/post-bg.jpg"
+      - label: "Latitude"
+        name: "latitude"
+        widget: "number"
+        valueType: "float"
+      - label: "Longitude"
+        name: "longitude"
+        widget: "number"
+        valueType: "float"
+      - label: "Zoom"
+        name: "zoom"
+        widget: "number"
+        valueType: "int"
+        default: 13
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: ["hike", "trail run"]
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        default: ["Activities"]
