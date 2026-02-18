@@ -3,20 +3,23 @@ languageCode = "en-gb"
 title = "The Flying Scotts"
 canonifyurls = false
 relativeURLs = true
-paginate = 8
 theme = ""
-copyright = "2020 The Flying Scotts"
+copyright = "2026 The Flying Scotts"
 disqusShortname = "flying-scotts"
 
-[author]
-  name = "Chris Scott"
+[pagination]
+  pagerSize = 8
 
 [params]
   DateForm = "2 Jan 2006"
 #  Description = "My Blog"
-  Author = "Chris Scott"
+#  Author = "Chris Scott"
   postSummariesFrontPage = 4 #Number of post summaries to show on front page, comment out to allow default(4)
   showReadTime = true #set to false to exclude read time from header of post
+
+[params.author]
+  name = "Chris Scott"
+  email = "user@example.com"
 
 [[params.social]]
   title = "linkedin"
